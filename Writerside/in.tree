@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="in"
+                 name="Instance Name"
+                 start-page="Section-Starting-Page.topic">
+
+    <toc-element topic="Section-Starting-Page.topic"/>
+    <toc-element topic="Aula-0-História-da-Web.md"/>
+    <toc-element topic="Aula-1-Instalação-do-ambiente.md"/>
+    <toc-element topic="Aula-2-Introdução-a-HTML.md"/>
+    <toc-element topic="Aula-3-Estrutura-do-HTML.md"/>
+    <toc-element topic="Aula-4-HTML-Semantico.md"/>
+    <toc-element topic="starter.md"/>
+</instance-profile>

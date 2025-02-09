@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Pagina Inicial" id="Section-Starting-Page">
+
+<!--    A section combines multiple topics dedicated to a specific subject.
+            Add a starting page to provide an overview of the topics in the section.
+            Start with two topics you want to promote in the <spotlight> group,
+            several important topics in the <primary> group (for example, where to start),
+            several less important topics in the <secondary> group (for example, more advanced topics),
+            and optionally add any other relevant topics in the <misc> group as cards and lists of links
+            (maybe related topics from other sections).
+            Only the spotlight section is limited to two topics.
+            For other groups, try to keep the number between 2 and 6, but you can add more if necessary.-->
+
+    <section-starting-page>
+        <title>Desenvolvimento Web</title>
+        <description>
+            Este curso aborda os fundamentos do desenvolvimento web com HTML, CSS e JavaScript ao longo de um semestre.
+            A seguir, confira o índice organizado das aulas, que inicia com os conceitos básicos e evolui até a implementação de projetos práticos e tópicos avançados.
+        </description>
+
+        <!--    Add up to 2 topics that you want to promote. Use the "type" attribute to select an icon.    -->
+        <spotlight>
+            <a href="Aula-1-Instalação-do-ambiente.md" type="start" summary="Inicie o curso conhecendo o ambiente de desenvolvimento e os conceitos iniciais da web.">
+                Aula 1: Introdução e Preparação do Ambiente
+            </a>
+            <a href="" type="development" summary="Apresente seu projeto integrador e conclua o curso com os conhecimentos adquiridos.">
+                Aula 16: Projeto Final e Apresentações
+            </a>
+        </spotlight>
+
+        <!-- Conteúdos principais: Fundamentos de HTML e CSS -->
+        <primary>
+            <title>Fundamentos HTML &amp; CSS</title>
+            <a href="Aula-2-Introdução-a-HTML.md" summary="Aprenda a estrutura básica do HTML.">
+                Aula 2: Fundamentos de HTML
+            </a>
+            <a href="Aula-3-Estrutura-do-HTML.md" summary="Estruture conteúdos e formatações utilizando as tags HTML.">
+                Aula 3: Conteúdo e Estrutura em HTML
+            </a>
+            <a href="" summary="Utilize elementos semânticos e técnicas de acessibilidade.">
+                Aula 4: HTML Semântico e Acessibilidade
+            </a>
+            <a href="" summary="Conheça os conceitos e a sintaxe básica do CSS.">
+                Aula 5: Introdução ao CSS
+            </a>
+            <a href="" summary="Aplique estilos básicos com cores, fontes e o Box Model.">
+                Aula 6: Estilização Básica com CSS
+            </a>
+            <a href="" summary="Explore técnicas de layout, posicionamento e Flexbox.">
+                Aula 7: Layouts e Posicionamento em CSS
+            </a>
+            <a href="" summary="Desenvolva uma página estática integrando HTML e CSS.">
+                Aula 8: Projeto Prático I – Página Estática
+            </a>
+        </primary>
+
+        <!-- Conteúdos secundários: Introdução ao JavaScript -->
+        <secondary>
+            <title>Introdução ao JavaScript</title>
+            <a href="" summary="Descubra o papel do JavaScript no desenvolvimento web.">
+                Aula 9: Introdução ao JavaScript
+            </a>
+            <a href="" summary="Entenda o controle de fluxo e o uso de funções.">
+                Aula 10: Controle de Fluxo e Funções em JavaScript
+            </a>
+            <a href="" summary="Interaja com o HTML manipulando o DOM.">
+                Aula 11: Manipulação do DOM com JavaScript
+            </a>
+            <a href="" summary="Implemente eventos e crie interatividade.">
+                Aula 12: Eventos e Interatividade
+            </a>
+        </secondary>
+
+        <!-- Tópicos adicionais: Conteúdos avançados em JavaScript -->
+        <misc>
+            <cards>
+                <title>Tópicos Avançados em JavaScript</title>
+                <a href="" summary="Aprenda sobre comunicação assíncrona e consumo de APIs.">
+                    Aula 13: Comunicação Assíncrona e APIs
+                </a>
+                <a href="" summary="Utilize técnicas de debugging e ferramentas de desenvolvimento.">
+                    Aula 14: Debugging e Ferramentas de Desenvolvimento
+                </a>
+                <a href="" summary="Descubra boas práticas, otimização e design responsivo.">
+                    Aula 15: Boas Práticas, Otimização e Design Responsivo
+                </a>
+            </cards>
+        </misc>
+    </section-starting-page>
+
+</topic>
