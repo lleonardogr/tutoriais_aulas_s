@@ -47,7 +47,8 @@ Nesta aula, você vai:
          <section id="home">
            <article>
              <h2>Bem-vindo!</h2>
-             <p>Esta é a seção inicial do site, onde apresentamos o conteúdo principal.</p>
+             <p>Esta é a seção inicial do site, onde apresentamos o 
+                 conteúdo principal.</p>
            </article>
          </section>
          <section id="sobre">
@@ -67,7 +68,8 @@ Nesta aula, você vai:
          <p>Notícias e atualizações importantes podem aparecer aqui.</p>
        </aside>
        <footer>
-         <p>&copy; 2024 Meu Site Semântico. Todos os direitos reservados.</p>
+           <p>&copy; 2024 Meu Site Semântico. Todos os direitos 
+               reservados.</p>
        </footer>
      </body>
    </html>
@@ -111,7 +113,7 @@ Nesta aula, você vai:
 > Se possível, utilize leitores de tela ou outras ferramentas de teste de acessibilidade para garantir que seu site esteja funcionando de forma inclusiva.
 
 <seealso>
-    <category ref="html-resources">
+    <category ref="wrs">
         <a href="https://www.w3schools.com/html/html5_semantic_elements.asp">W3Schools - HTML5 Semantic Elements</a>
         <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">MDN Web Docs - HTML Elements</a>
         <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">W3C - Introduction to Web Accessibility</a>
