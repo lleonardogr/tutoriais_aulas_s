@@ -24,7 +24,7 @@ Siga os passos abaixo para criar sua página `conteudo.html`:
 </procedure>
 
 Copie e cole o exemplo de código abaixo no arquivo:
-   ```html
+```html
    <!DOCTYPE html>
    <html lang="pt-BR">
      <head>
@@ -49,6 +49,33 @@ Copie e cole o exemplo de código abaixo no arquivo:
          <li>Item B</li>
          <li>Item C</li>
        </ul>
+       
+       <h2>Utilizando a Tag &lt;div&gt;</h2>
+       <p>A tag <code>&lt;div&gt;</code> é usada para agrupar e estruturar outros elementos em blocos. Isso facilita a organização e a aplicação de estilos específicos. Veja o exemplo abaixo:</p>
+       <div style="border: 1px solid #ccc; padding: 10px;">
+         <h3>Seção Agrupada com &lt;div&gt;</h3>
+         <p>Este parágrafo está dentro de um <code>&lt;div&gt;</code>, que pode ser estilizado como um bloco separado.</p>
+       </div>
+       
+       <h2>Utilizando a Tag &lt;table&gt;</h2>
+       <p>A tag <code>&lt;table&gt;</code> permite criar tabelas para organizar dados em linhas e colunas. Por exemplo:</p>
+       <table border="1" cellpadding="5">
+         <tr>
+           <th>Nome</th>
+           <th>Idade</th>
+           <th>Cidade</th>
+         </tr>
+         <tr>
+           <td>Ana</td>
+           <td>25</td>
+           <td>São Paulo</td>
+         </tr>
+         <tr>
+           <td>Bruno</td>
+           <td>30</td>
+           <td>Rio de Janeiro</td>
+         </tr>
+       </table>
        
        <h2>Inserindo Imagens e Links</h2>
        <p>A seguir, um exemplo de como inserir uma imagem:</p>
@@ -83,6 +110,17 @@ Copie e cole o exemplo de código abaixo no arquivo:
 : *Atributos:*  
     - `src`: define o caminho para a imagem.  
     - `alt`: fornece um texto alternativo que descreve a imagem.
+
+**`<div>`**  
+: Uso: Utilizada para agrupar e estruturar outros elementos em blocos, permitindo melhor organização e aplicação de estilos.
+: Benefícios: Facilita a criação de layouts e a separação lógica do conteúdo.
+
+**`<table>`**  
+: Uso: Cria tabelas para organizar dados em linhas e colunas.
+: Elementos Comuns:
+	•	**`<tr>`**  para definir uma linha.
+	•	**`<th>`**  para definir um cabeçalho de coluna.
+	•	**`<td>`**   para definir uma célula de dados.
 
 **`<a>`**  
 : *Uso:* Cria links que permitem navegar para outras páginas ou sites.  
