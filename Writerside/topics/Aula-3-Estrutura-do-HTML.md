@@ -51,14 +51,20 @@ Copie e cole o exemplo de código abaixo no arquivo:
        </ul>
        
        <h2>Utilizando a Tag &lt;div&gt;</h2>
-       <p>A tag <code>&lt;div&gt;</code> é usada para agrupar e estruturar outros elementos em blocos. Isso facilita a organização e a aplicação de estilos específicos. Veja o exemplo abaixo:</p>
+       <p>A tag <code>&lt;div&gt;</code> é usada para agrupar e estruturar 
+           outros elementos em blocos. 
+           Isso facilita a organização e a aplicação de estilos específicos. 
+           Veja o exemplo abaixo:</p>
        <div style="border: 1px solid #ccc; padding: 10px;">
          <h3>Seção Agrupada com &lt;div&gt;</h3>
-         <p>Este parágrafo está dentro de um <code>&lt;div&gt;</code>, que pode ser estilizado como um bloco separado.</p>
+         <p>Este parágrafo está dentro de um <code>&lt;div&gt;</code>, 
+             que pode ser 
+             estilizado como um bloco separado.</p>
        </div>
        
        <h2>Utilizando a Tag &lt;table&gt;</h2>
-       <p>A tag <code>&lt;table&gt;</code> permite criar tabelas para organizar dados em linhas e colunas. Por exemplo:</p>
+       <p>A tag <code>&lt;table&gt;</code> permite criar tabelas para 
+           organizar dados em linhas e colunas. Por exemplo:</p>
        <table border="1" cellpadding="5">
          <tr>
            <th>Nome</th>
@@ -86,8 +92,11 @@ Copie e cole o exemplo de código abaixo no arquivo:
        
        <h2>Incorporando Vídeos</h2>
        <p>Você pode incorporar vídeos do YouTube, por exemplo:</p>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+       <iframe width="560" height="315" 
+               src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+         title="YouTube video player" frameborder="0" 
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+               gyroscope; picture-in-picture" allowfullscreen>
        </iframe>
      </body>
    </html>
