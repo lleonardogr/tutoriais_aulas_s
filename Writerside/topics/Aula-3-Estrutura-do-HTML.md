@@ -33,7 +33,8 @@ Copie e cole o exemplo de código abaixo no arquivo:
      </head>
      <body>
        <h1>Bem-vindo à Minha Página</h1>
-       <p>Este é um exemplo de parágrafo. Aqui você pode adicionar textos explicativos, imagens e links.</p>
+       <p>Este é um exemplo de parágrafo. Aqui você pode adicionar textos 
+           explicativos, imagens e links.</p>
        
        <h2>Listas Ordenadas e Não Ordenadas</h2>
        <p>Exemplo de lista ordenada:</p>
@@ -51,9 +52,11 @@ Copie e cole o exemplo de código abaixo no arquivo:
        </ul>
        
        <h2>Utilizando a Tag &lt;div&gt;</h2>
-       <p>A tag <code>&lt;div&gt;</code> é usada para agrupar e estruturar 
+       <p>A tag <code>&lt;div&gt;</code> é usada para agrupar e 
+           estruturar 
            outros elementos em blocos. 
-           Isso facilita a organização e a aplicação de estilos específicos. 
+           Isso facilita a organização e a aplicação de estilos 
+           específicos. 
            Veja o exemplo abaixo:</p>
        <div style="border: 1px solid #ccc; padding: 10px;">
          <h3>Seção Agrupada com &lt;div&gt;</h3>
@@ -85,7 +88,8 @@ Copie e cole o exemplo de código abaixo no arquivo:
        
        <h2>Inserindo Imagens e Links</h2>
        <p>A seguir, um exemplo de como inserir uma imagem:</p>
-       <img src="https://via.placeholder.com/150" alt="Imagem de exemplo">
+       <img src="https://via.placeholder.com/150" alt="Imagem de exemplo"
+       >
        
        <p>E aqui um exemplo de link:</p>
        <a href="https://www.example.com">Visite o Example.com</a>
@@ -95,7 +99,8 @@ Copie e cole o exemplo de código abaixo no arquivo:
        <iframe width="560" height="315" 
                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
          title="YouTube video player" frameborder="0" 
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+               allow="accelerometer; autoplay; clipboard-write; 
+               encrypted-media; 
                gyroscope; picture-in-picture" allowfullscreen>
        </iframe>
      </body>
