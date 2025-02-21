@@ -23,7 +23,7 @@ Você deverá criar um **site estático** de tema livre utilizando **HTML semân
 ### 📝 Instruções {id="instru-es_2"}
 Dessa vez, você deverá criar um **site estático** utilizando HTML e CSS com um **tema socialmente positivo** para sua comunidade local. O site pode ser para uma **ONG**, um **pequeno negócio**, um **evento comunitário** ou qualquer outra iniciativa que beneficie sua região.
 
-#### 📆 Data de entrega: **A definir**
+#### 📆 Data de entrega: **04/01**
 
 ### 🎯 Requisitos {id="requisitos_2"}
 
