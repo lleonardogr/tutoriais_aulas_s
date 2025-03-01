@@ -13,6 +13,8 @@
     <toc-element topic="Aula-3-Estrutura-do-HTML.md"/>
     <toc-element topic="Aula-4-HTML-Semantico.md"/>
     <toc-element topic="Aula-5-Introdução-a-CSS.md"/>
+    <toc-element topic="Aula-6-Estilização-Básica-com-CSS.md"/>
+    <toc-element topic="Aula-7-Layouts-e-Posicionamento-em-CSS.md"/>
     <toc-element topic="Aula-16-Projetos-e-provas.md"/>
-    <toc-element topic="starter.md"/>
+    <toc-element topic="starter.md" hidden="true"/>
 </instance-profile>
