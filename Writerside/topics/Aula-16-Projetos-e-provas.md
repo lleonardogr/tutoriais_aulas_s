@@ -19,10 +19,6 @@ Você deverá criar um **site estático** de tema livre utilizando **HTML semân
 ✅ O site deve conter **arquivos multimídia** (imagens e/ou vídeos);
 ✅ Gravação do processo de criação do site e envio do vídeo no YouTube (pode ser não listado).
 
-segue um exemplo de vídeo para usarem
-
-<video src="https://www.youtube.com/watch?v=ijv8-PeLZ_o" width="320" height="320" controls/>
-
 ---
 
 ## 📌 Trabalho Extensivo: Site Socialmente Positivo
