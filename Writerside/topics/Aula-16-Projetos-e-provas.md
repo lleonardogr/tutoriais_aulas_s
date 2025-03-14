@@ -1,5 +1,8 @@
 # Aula 16: Projetos e provas
 
+## Link do drive para a entrega
+[Entregas](https://docs.google.com/spreadsheets/d/1QxnXV_NOJTlT_HTAaD55IrGAi2NU7lHEUKqHSPpXYD8/edit?usp=sharing)
+
 ## 📌 Prova de Fundamentos de HTML e CSS
 
 ### 📝 Instruções {id="instru-es_1"}
