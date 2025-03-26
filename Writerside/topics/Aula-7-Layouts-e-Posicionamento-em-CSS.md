@@ -186,18 +186,18 @@ Explicação Detalhada dos Conceitos e Elementos do CSS para Layout
 
 Position:
 : Uso: Controla como um elemento é posicionado na página.
-•	static: Valor padrão, sem posicionamento especial.
-•	relative: Posiciona o elemento em relação à sua posição original.
-•	absolute: Remove o elemento do fluxo normal e o posiciona em relação ao seu ancestral posicionado.
-•	fixed: Fixa o elemento em uma posição relativa à janela do navegador.
-•	sticky: Combina características de relative e fixed, ficando fixo quando atinge um determinado ponto.
+:	static: Valor padrão, sem posicionamento especial.
+:	relative: Posiciona o elemento em relação à sua posição original.
+:	absolute: Remove o elemento do fluxo normal e o posiciona em relação ao seu ancestral posicionado.
+:	fixed: Fixa o elemento em uma posição relativa à janela do navegador.
+:	sticky: Combina características de relative e fixed, ficando fixo quando atinge um determinado ponto.
 
 Flexbox:
 : Uso: Cria layouts flexíveis e responsivos.
-•	display: flex: Transforma o container em um flex container.
-•	flex-direction: Define a direção dos itens (linha ou coluna).
-•	justify-content: Alinha os itens ao longo do eixo principal.
-•	align-items: Alinha os itens ao longo do eixo transversal.
+:	display: flex: Transforma o container em um flex container.
+:	flex-direction: Define a direção dos itens (linha ou coluna).
+:	justify-content: Alinha os itens ao longo do eixo principal.
+:	align-items: Alinha os itens ao longo do eixo transversal.
 
 Media Queries:
 : Uso: Permitem aplicar estilos específicos para diferentes tamanhos de tela, garantindo que o layout seja responsivo.

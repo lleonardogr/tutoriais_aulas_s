@@ -6,6 +6,7 @@
                  name="Instance Name"
                  start-page="Section-Starting-Page.topic">
 
+    <toc-element topic="Aula-8-Grid-System.md"/>
     <toc-element topic="Section-Starting-Page.topic"/>
     <toc-element topic="Aula-0-História-da-Web.md"/>
     <toc-element topic="Aula-1-Instalação-do-ambiente.md"/>
@@ -15,6 +16,8 @@
     <toc-element topic="Aula-5-Introdução-a-CSS.md"/>
     <toc-element topic="Aula-6-Estilização-Básica-com-CSS.md"/>
     <toc-element topic="Aula-7-Layouts-e-Posicionamento-em-CSS.md"/>
+    <toc-element topic="Aula-9-Introdução-ao-JS.md"/>
+    <toc-element topic="Aula-10-DOM-e-JS.md"/>
     <toc-element topic="Aula-16-Projetos-e-provas.md"/>
     <toc-element topic="starter.md" hidden="true"/>
 </instance-profile>
