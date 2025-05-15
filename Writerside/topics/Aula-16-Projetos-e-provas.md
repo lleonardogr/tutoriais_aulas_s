@@ -42,6 +42,42 @@ Dessa vez, você deverá criar um **site estático** utilizando HTML e CSS com u
 
 ---
 
+## 📌 Projeto 2: Enriquecendo o Site com JavaScript
+
+### 📝 Instruções {id="instru-es_3"}
+Nesta etapa, você deverá aprimorar o site que criou no projeto anterior, adicionando funcionalidades com **JavaScript**. O objetivo é tornar seu site mais interativo e dinâmico, demonstrando seu conhecimento em manipulação do DOM e eventos em JavaScript.
+
+#### 📆 Data de entrega: **18/04**
+
+### 🎯 Requisitos {id="requisitos_3"}
+
+✅ Implementar um **sistema de tradução** para pelo menos dois idiomas (ex.: Português/Inglês);
+✅ Adicionar um **alternador de temas** (claro/escuro) que persista entre sessões usando localStorage;
+✅ Criar pelo menos **dois componentes interativos** usando JavaScript (exemplos abaixo);
+✅ Validar pelo menos um **formulário** usando JavaScript antes do envio;
+✅ Adicionar **animações ou transições** controladas por JavaScript;
+✅ Atualizar o site no **GitHub Pages** e enviar o link como entrega.
+
+### 💻 Sugestões de componentes interativos
+
+- Carrossel de imagens ou slides
+- Menu responsivo que se adapta a diferentes tamanhos de tela
+- Modal/popup para informações adicionais
+- Accordion para perguntas frequentes
+- Botões de compartilhamento em redes sociais
+- Sistema de filtragem de conteúdo
+- Calculadora relacionada ao tema do site
+
+### 📋 Critérios de avaliação
+
+- **Funcionalidade:** Todas as implementações JavaScript devem funcionar corretamente sem erros no console
+- **Organização do código:** Código limpo, comentado e bem estruturado
+- **Usabilidade:** As novas funções devem melhorar a experiência do usuário
+- **Originalidade:** Implementações criativas e relevantes ao tema do site
+- **Responsividade:** Tudo deve funcionar tanto em dispositivos móveis quanto em desktops
+
+---
+
 💡 **Dicas**
 - Escolha um tema que tenha impacto positivo na sua comunidade;
 - Se possível, entre em contato com a organização ou pessoa beneficiada e entenda suas necessidades;
