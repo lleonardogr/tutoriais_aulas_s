@@ -29,7 +29,7 @@ Segue um exemplo de video para seguir
 ### 📝 Instruções {id="instru-es_2"}
 Dessa vez, você deverá criar um **site estático** utilizando HTML e CSS com um **tema socialmente positivo** para sua comunidade local. O site pode ser para uma **ONG**, um **pequeno negócio**, um **evento comunitário** ou qualquer outra iniciativa que beneficie sua região.
 
-#### 📆 Data de entrega: **04/04**
+#### 📆 Data de entrega: **04/05**
 
 ### 🎯 Requisitos {id="requisitos_2"}
 
@@ -47,7 +47,7 @@ Dessa vez, você deverá criar um **site estático** utilizando HTML e CSS com u
 ### 📝 Instruções {id="instru-es_3"}
 Nesta etapa, você deverá aprimorar o site que criou no projeto anterior, adicionando funcionalidades com **JavaScript**. O objetivo é tornar seu site mais interativo e dinâmico, demonstrando seu conhecimento em manipulação do DOM e eventos em JavaScript.
 
-#### 📆 Data de entrega: **18/04**
+#### 📆 Data de entrega: **06/06**
 
 ### 🎯 Requisitos {id="requisitos_3"}
 
