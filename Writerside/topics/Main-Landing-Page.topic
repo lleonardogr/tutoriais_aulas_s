@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Ciência da Computação" id="Main-Landing-Page">
+
+    <section-starting-page>
+        <title>Fundamentos de Ciência da Computação</title>
+        <description>
+            Bem-vindo ao curso de Fundamentos de Ciência da Computação! Este material abrange dois pilares essenciais
+            da computação moderna: Desenvolvimento Web e Bancos de Dados. Escolha o tópico de seu interesse para
+            começar sua jornada de aprendizado.
+        </description>
+
+        <!-- Spotlight: Destaque para os dois principais tópicos -->
+        <spotlight>
+            <a href="web/Web-Starting-Page.topic" type="development" summary="Aprenda HTML, CSS e JavaScript do zero. Crie sites interativos e responsivos.">
+                Introdução ao Desenvolvimento Web
+            </a>
+            <a href="database/Database-Starting-Page.topic" type="database" summary="Domine SQL Server e aprenda a gerenciar e consultar bancos de dados relacionais.">
+                Introdução a Bancos de Dados
+            </a>
+        </spotlight>
+
+        <!-- Conteúdo primário: Visão geral dos tópicos -->
+        <primary>
+            <title>O que você vai aprender</title>
+            <a href="web/Web-Starting-Page.topic" summary="Estruturação de páginas, estilização visual e interatividade com JavaScript.">
+                Desenvolvimento Web Front-end
+            </a>
+            <a href="database/Database-Starting-Page.topic" summary="Modelagem de dados, consultas SQL e gerenciamento de bancos de dados.">
+                Sistemas de Gerenciamento de Bancos de Dados
+            </a>
+        </primary>
+
+        <!-- Conteúdo secundário: Projetos práticos -->
+        <secondary>
+            <title>Projetos Práticos</title>
+            <a href="web/Aula-16-Projetos-e-provas.md" summary="Desenvolva sites completos com HTML, CSS e JavaScript.">
+                Projetos Web
+            </a>
+            <a href="database/Aula-DB-16-Projetos-e-Avaliações-DB.md" summary="Crie e gerencie bancos de dados completos com SQL Server.">
+                Projetos de Banco de Dados
+            </a>
+        </secondary>
+
+        <!-- Informações adicionais -->
+        <misc>
+            <cards>
+                <title>Recursos Adicionais</title>
+                <a href="web/Aula-0-História-da-Web.md" summary="Conheça a história da World Wide Web e sua evolução.">
+                    História da Web
+                </a>
+                <a href="database/Aula-DB-0-História-dos-Bancos-de-Dados.md" summary="Entenda a evolução dos sistemas de bancos de dados.">
+                    História dos Bancos de Dados
+                </a>
+            </cards>
+        </misc>
+    </section-starting-page>
+
+</topic>

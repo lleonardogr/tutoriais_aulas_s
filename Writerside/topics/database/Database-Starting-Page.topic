@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Bancos de Dados" id="Database-Starting-Page">
+
+    <section-starting-page>
+        <title>Introdução a Bancos de Dados com SQL Server</title>
+        <description>
+            Este curso aborda os fundamentos de bancos de dados relacionais utilizando SQL Server.
+            Você aprenderá desde os conceitos básicos de modelagem até consultas avançadas, stored procedures e otimização.
+            A seguir, confira o índice organizado das aulas, que evolui progressivamente dos fundamentos até tópicos avançados.
+        </description>
+
+        <!-- Spotlight: Destaque para início e fim do curso -->
+        <spotlight>
+            <a href="Aula-DB-1-Instalação-SQL-Server.md" type="start" summary="Inicie o curso instalando e configurando o SQL Server e suas ferramentas.">
+                Aula 1: Instalação e Configuração do SQL Server
+            </a>
+            <a href="Aula-DB-16-Projetos-e-Avaliações-DB.md" type="database" summary="Apresente seu projeto de banco de dados completo e conclua o curso.">
+                Aula 16: Projetos e Avaliações
+            </a>
+        </spotlight>
+
+        <!-- Conteúdos principais: Fundamentos de Bancos de Dados e SQL -->
+        <primary>
+            <title>Fundamentos de Bancos de Dados &amp; SQL</title>
+            <a href="Aula-DB-0-História-dos-Bancos-de-Dados.md" summary="Conheça a história e evolução dos sistemas de bancos de dados.">
+                Aula 0: História dos Bancos de Dados
+            </a>
+            <a href="Aula-DB-2-Introdução-ao-SQL.md" summary="Aprenda a linguagem SQL e seus principais comandos.">
+                Aula 2: Introdução ao SQL
+            </a>
+            <a href="Aula-DB-3-Modelagem-de-Dados.md" summary="Entenda modelagem conceitual, lógica e física de dados.">
+                Aula 3: Modelagem de Dados
+            </a>
+            <a href="Aula-DB-4-Tipos-de-Dados-SQL-Server.md" summary="Conheça os tipos de dados disponíveis no SQL Server.">
+                Aula 4: Tipos de Dados no SQL Server
+            </a>
+            <a href="Aula-DB-5-SELECT-Consultas-Básicas.md" summary="Domine o comando SELECT e consultas básicas.">
+                Aula 5: SELECT e Consultas Básicas
+            </a>
+            <a href="Aula-DB-6-INSERT-UPDATE-DELETE.md" summary="Aprenda a manipular dados com INSERT, UPDATE e DELETE.">
+                Aula 6: INSERT, UPDATE e DELETE
+            </a>
+            <a href="Aula-DB-7-WHERE-e-Operadores.md" summary="Utilize cláusulas WHERE e operadores para filtrar dados.">
+                Aula 7: WHERE e Operadores
+            </a>
+            <a href="Aula-DB-8-Projeto-Prático-I-Banco-Simples.md" summary="Desenvolva seu primeiro banco de dados completo.">
+                Aula 8: Projeto Prático I – Banco de Dados Simples
+            </a>
+        </primary>
+
+        <!-- Conteúdos secundários: Consultas Avançadas -->
+        <secondary>
+            <title>Consultas Avançadas</title>
+            <a href="Aula-DB-9-JOINs-e-Relacionamentos.md" summary="Domine JOINs e relacionamentos entre tabelas.">
+                Aula 9: JOINs e Relacionamentos
+            </a>
+            <a href="Aula-DB-10-Funções-Agregadas-GROUP-BY.md" summary="Utilize funções agregadas e GROUP BY para análise de dados.">
+                Aula 10: Funções Agregadas e GROUP BY
+            </a>
+            <a href="Aula-DB-11-Subconsultas.md" summary="Aprenda a criar subconsultas e consultas aninhadas.">
+                Aula 11: Subconsultas
+            </a>
+            <a href="Aula-DB-12-Views-e-Índices.md" summary="Crie views e índices para otimizar suas consultas.">
+                Aula 12: Views e Índices
+            </a>
+        </secondary>
+
+        <!-- Tópicos adicionais: Conteúdos avançados -->
+        <misc>
+            <cards>
+                <title>Tópicos Avançados em SQL Server</title>
+                <a href="Aula-DB-13-Stored-Procedures.md" summary="Crie stored procedures para automatizar operações.">
+                    Aula 13: Stored Procedures
+                </a>
+                <a href="Aula-DB-14-Triggers-e-Transações.md" summary="Implemente triggers e gerencie transações.">
+                    Aula 14: Triggers e Transações
+                </a>
+                <a href="Aula-DB-15-Otimização-e-Boas-Práticas.md" summary="Otimize suas consultas e aprenda boas práticas.">
+                    Aula 15: Otimização e Boas Práticas
+                </a>
+            </cards>
+        </misc>
+    </section-starting-page>
+
+</topic>
