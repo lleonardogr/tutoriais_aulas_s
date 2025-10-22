@@ -18,7 +18,7 @@
             <a href="web/Web-Starting-Page.topic" type="development" summary="Aprenda HTML, CSS e JavaScript do zero. Crie sites interativos e responsivos.">
                 Introdução ao Desenvolvimento Web
             </a>
-            <a href="database/Database-Starting-Page.topic" type="database" summary="Domine SQL Server e aprenda a gerenciar e consultar bancos de dados relacionais.">
+            <a href="database/Database-Starting-Page.topic" type="tools" summary="Domine SQL Server e aprenda a gerenciar e consultar bancos de dados relacionais.">
                 Introdução a Bancos de Dados
             </a>
         </spotlight>
