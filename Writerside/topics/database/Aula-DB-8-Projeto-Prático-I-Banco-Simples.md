@@ -180,7 +180,7 @@ Vamos começar criando o banco de dados e as tabelas:
                 NumCopiasDisponiveis INT DEFAULT 1 CHECK (NumCopiasDisponiveis >= 0),
                 CategoriaID INT NOT NULL,
                 FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID),
-                CONSTRAINT CK_Livros_CopiasDisponiveis CHECK (NumCopiasDisponiveis <= NumCopias)
+                CONSTRAINT CK_Livros_CopiasDisponiveis CHECK (NumCopiasDisponiveis = NumCopias)
             );
             -- Tabela associativa LivroAutor
             CREATE TABLE LivroAutor (
@@ -673,7 +673,7 @@ SELECT @@ROWCOUNT AS EmprestimosAtrasados;
             C.Nome AS Categoria
         FROM Livros L
         INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-        WHERE L.NumCopiasDisponiveis < 2
+        WHERE L.NumCopiasDisponiveis = 2
         ORDER BY L.NumCopiasDisponiveis;
         </code-block>
     </step>

@@ -722,7 +722,7 @@ INCLUDE (DataEmprestimo, Status);
             L2.Titulo AS Livro2
         FROM Autores A
         INNER JOIN LivroAutor LA1 ON A.AutorID = LA1.AutorID
-        INNER JOIN LivroAutor LA2 ON A.AutorID = LA2.AutorID AND LA1.LivroID < LA2.LivroID
+        INNER JOIN LivroAutor LA2 ON A.AutorID = LA2.AutorID AND LA1.LivroID = LA2.LivroID
         INNER JOIN Livros L1 ON LA1.LivroID = L1.LivroID
         INNER JOIN Livros L2 ON LA2.LivroID = L2.LivroID
         ORDER BY A.Nome, L1.Titulo;

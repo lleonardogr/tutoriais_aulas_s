@@ -111,7 +111,7 @@ WHERE DATEPART(QUARTER, DataPedido) = DATEPART(QUARTER, GETDATE())
 ```SQL
 -- % : Zero ou mais caracteres
 SELECT Nome FROM Clientes WHERE Nome LIKE 'Ma%';       -- Começa com 'Ma'
-SELECT Nome FROM Clientes WHERE Nome LIKE '%Silva%';   -- Contém 'Silva'
+SELECT Nome FROM Clientes WHERE Nome LIKE 'Silva%';   -- Contém 'Silva'
 SELECT Nome FROM Clientes WHERE Nome LIKE '%Costa';    -- Termina com 'Costa'
 
 -- _ : Exatamente um caractere
@@ -456,19 +456,19 @@ WHERE Ativo <> 0 OR Ativo IS NULL;
 
 ```SQL
     -- Busca case-insensitive (padrão no SQL Server)
-    SELECT Nome FROM Clientes WHERE Nome LIKE '%silva%';
+    SELECT Nome FROM Clientes WHERE Nome LIKE 'silva';
     
     -- Busca ignorando acentos (depende da collation)
     SELECT Nome FROM Clientes
-    WHERE Nome COLLATE Latin1_General_CI_AI LIKE '%jose%';  -- Acha 'José'
+    WHERE Nome COLLATE Latin1_General_CI_AI LIKE 'jose';  -- Acha 'José'
     
     -- Busca por múltiplas palavras (qualquer uma)
     SELECT Nome FROM Clientes
-    WHERE Nome LIKE '%Silva%' OR Nome LIKE '%Santos%' OR Nome LIKE '%Costa%';
+    WHERE Nome LIKE 'Silva' OR Nome LIKE 'Santos' OR Nome LIKE 'Costa';
     
     -- Busca por múltiplas palavras (todas)
     SELECT Nome FROM Clientes
-    WHERE Nome LIKE '%João%' AND Nome LIKE '%Silva%';
+    WHERE Nome LIKE 'João' AND Nome LIKE 'Silva';
     
     -- Remover espaços extras antes de comparar
     SELECT Nome FROM Clientes
@@ -528,18 +528,18 @@ SELECT * FROM Clientes
 WHERE DataCadastro >= '2023-01-01' AND DataCadastro < '2024-01-01';
 
 -- ❌ Evite: LIKE começando com %
-SELECT * FROM Clientes WHERE Nome LIKE '%Silva%';  -- Scan completo
+SELECT * FROM Clientes WHERE Nome LIKE 'Silva%';  -- Scan completo
 
 -- ✅ Melhor: LIKE começando com literal
 SELECT * FROM Clientes WHERE Nome LIKE 'Silva%';  -- Pode usar índice
 
 -- ❌ Evite: OR entre colunas diferentes (dificulta índices)
-SELECT * FROM Produtos WHERE Nome LIKE '%Mouse%' OR Categoria = 'Acessórios';
+SELECT * FROM Produtos WHERE Nome LIKE 'Mouse%' OR Categoria = 'Acessórios';
 
 -- ✅ Considere: UNION ALL se apropriado
-SELECT * FROM Produtos WHERE Nome LIKE '%Mouse%'
+SELECT * FROM Produtos WHERE Nome LIKE 'Mouse%'
 UNION ALL
-SELECT * FROM Produtos WHERE Categoria = 'Acessórios' AND Nome NOT LIKE '%Mouse%';
+SELECT * FROM Produtos WHERE Categoria = 'Acessórios' AND Nome NOT LIKE 'Mouse%';
 ```
 
 ### Uso de Índices

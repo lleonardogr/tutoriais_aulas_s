@@ -267,7 +267,7 @@ SELECT Nome, Email FROM Clientes WHERE Nome LIKE 'João%';
 SELECT Nome, Email FROM Clientes WHERE Email LIKE '%@gmail.com';
 
 -- Nomes que contêm 'Silva'
-SELECT Nome FROM Clientes WHERE Nome LIKE '%Silva%';
+SELECT Nome FROM Clientes WHERE Nome LIKE 'Silva%';
 
 -- Nomes que terminam com 'Santos'
 SELECT Nome FROM Clientes WHERE Nome LIKE '%Santos';
@@ -284,7 +284,7 @@ SELECT Nome FROM Produtos WHERE Nome LIKE '[^AB]%';
 -- Case-insensitive por padrão no SQL Server
 -- Para case-sensitive, use COLLATE
 SELECT Nome FROM Clientes
-WHERE Nome LIKE '%silva%' COLLATE Latin1_General_CS_AS;
+WHERE Nome LIKE 'silva%' COLLATE Latin1_General_CS_AS;
 ```
 
 ### Operador IS NULL / IS NOT NULL

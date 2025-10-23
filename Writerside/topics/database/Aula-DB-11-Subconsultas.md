@@ -968,15 +968,15 @@ SET STATISTICS TIME OFF;
                     L.Titulo,
                     C.Nome AS Categoria,
                     COUNT(E.EmprestimoID) AS TotalEmprestimos,
-                    ROW_NUMBER() OVER (PARTITION BY C.CategoriaID ORDER BY COUNT(E.EmprestimoID) DESC) AS Ranking
+                    ROW_NUMBER() OVER (PARTITION BY C.CategoriaID 
+                ORDER BY COUNT(E.EmprestimoID) DESC) AS Ranking
                 FROM Livros L
                 INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
                 LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
                 GROUP BY L.LivroID, L.Titulo, C.CategoriaID, C.Nome
             )
             SELECT Categoria, Titulo, TotalEmprestimos
-            FROM LivrosRankeados
-            WHERE Ranking <= 3
+            FROM LivrosRankeados WHERE Ranking = 3
             ORDER BY Categoria, Ranking;
         </code-block>
     </step>
@@ -987,7 +987,8 @@ SET STATISTICS TIME OFF;
                 L.Titulo,
                 COUNT(E.EmprestimoID) AS TotalEmprestimos,
                 (SELECT COUNT(*) FROM Emprestimos) AS TotalGeral,
-                CAST(COUNT(E.EmprestimoID) * 100.0 / (SELECT COUNT(*) FROM Emprestimos) AS DECIMAL(5,2)) AS Percentual
+                CAST(COUNT(E.EmprestimoID) * 100.0 / (SELECT COUNT(*) 
+            FROM Emprestimos) AS DECIMAL(5,2)) AS Percentual
             FROM Livros L
             LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
             GROUP BY L.LivroID, L.Titulo
@@ -1003,7 +1004,7 @@ SET STATISTICS TIME OFF;
                 UNION ALL
                 SELECT N + 1
                 FROM Numeros
-                WHERE N < 100
+                WHERE N = 100
             )
             SELECT N FROM Numeros
             OPTION (MAXRECURSION 100);
