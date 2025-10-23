@@ -913,100 +913,100 @@ SET STATISTICS TIME OFF;
     <step>
         <p><strong>Solução 1:</strong> Livros acima da média</p>
         <code-block lang="sql">
-SELECT Titulo, NumCopias
-FROM Livros
-WHERE NumCopias > (SELECT AVG(NumCopias) FROM Livros)
-ORDER BY NumCopias DESC;
+            SELECT Titulo, NumCopias
+            FROM Livros
+            WHERE NumCopias > (SELECT AVG(NumCopias) FROM Livros)
+            ORDER BY NumCopias DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 2:</strong> Membros sem empréstimos</p>
         <code-block lang="sql">
-SELECT Nome, Email, DataCadastro
-FROM Membros M
-WHERE NOT EXISTS (
-    SELECT 1 FROM Emprestimos E WHERE E.MembroID = M.MembroID
-);
+            SELECT Nome, Email, DataCadastro
+            FROM Membros M
+            WHERE NOT EXISTS (
+                SELECT 1 FROM Emprestimos E WHERE E.MembroID = M.MembroID
+            );
         </code-block>
     </step>
     <step>
         <p><strong>Solução 3:</strong> Livros da maior categoria</p>
         <code-block lang="sql">
-SELECT L.Titulo, C.Nome AS Categoria
-FROM Livros L
-INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-WHERE L.CategoriaID = (
-    SELECT TOP 1 CategoriaID
-    FROM Livros
-    GROUP BY CategoriaID
-    ORDER BY COUNT(*) DESC
-);
+            SELECT L.Titulo, C.Nome AS Categoria
+            FROM Livros L
+            INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+            WHERE L.CategoriaID = (
+                SELECT TOP 1 CategoriaID
+                FROM Livros
+                GROUP BY CategoriaID
+                ORDER BY COUNT(*) DESC
+            );
         </code-block>
     </step>
     <step>
         <p><strong>Solução 5:</strong> Categorias acima da média</p>
         <code-block lang="sql">
-SELECT C.Nome AS Categoria, COUNT(L.LivroID) AS TotalLivros
-FROM Categorias C
-LEFT JOIN Livros L ON C.CategoriaID = L.CategoriaID
-GROUP BY C.CategoriaID, C.Nome
-HAVING COUNT(L.LivroID) > (
-    SELECT AVG(Total)
-    FROM (
-        SELECT COUNT(*) AS Total
-        FROM Livros
-        GROUP BY CategoriaID
-    ) AS MediaCategorias
-);
+            SELECT C.Nome AS Categoria, COUNT(L.LivroID) AS TotalLivros
+            FROM Categorias C
+            LEFT JOIN Livros L ON C.CategoriaID = L.CategoriaID
+            GROUP BY C.CategoriaID, C.Nome
+            HAVING COUNT(L.LivroID) > (
+                SELECT AVG(Total)
+                FROM (
+                    SELECT COUNT(*) AS Total
+                    FROM Livros
+                    GROUP BY CategoriaID
+                ) AS MediaCategorias
+            );
         </code-block>
     </step>
     <step>
         <p><strong>Solução 6:</strong> Top 3 por categoria com CTE</p>
         <code-block lang="sql">
-WITH LivrosRankeados AS (
-    SELECT
-        L.Titulo,
-        C.Nome AS Categoria,
-        COUNT(E.EmprestimoID) AS TotalEmprestimos,
-        ROW_NUMBER() OVER (PARTITION BY C.CategoriaID ORDER BY COUNT(E.EmprestimoID) DESC) AS Ranking
-    FROM Livros L
-    INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-    LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
-    GROUP BY L.LivroID, L.Titulo, C.CategoriaID, C.Nome
-)
-SELECT Categoria, Titulo, TotalEmprestimos
-FROM LivrosRankeados
-WHERE Ranking <= 3
-ORDER BY Categoria, Ranking;
+            WITH LivrosRankeados AS (
+                SELECT
+                    L.Titulo,
+                    C.Nome AS Categoria,
+                    COUNT(E.EmprestimoID) AS TotalEmprestimos,
+                    ROW_NUMBER() OVER (PARTITION BY C.CategoriaID ORDER BY COUNT(E.EmprestimoID) DESC) AS Ranking
+                FROM Livros L
+                INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+                LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
+                GROUP BY L.LivroID, L.Titulo, C.CategoriaID, C.Nome
+            )
+            SELECT Categoria, Titulo, TotalEmprestimos
+            FROM LivrosRankeados
+            WHERE Ranking <= 3
+            ORDER BY Categoria, Ranking;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 9:</strong> Percentual de empréstimos</p>
         <code-block lang="sql">
-SELECT
-    L.Titulo,
-    COUNT(E.EmprestimoID) AS TotalEmprestimos,
-    (SELECT COUNT(*) FROM Emprestimos) AS TotalGeral,
-    CAST(COUNT(E.EmprestimoID) * 100.0 / (SELECT COUNT(*) FROM Emprestimos) AS DECIMAL(5,2)) AS Percentual
-FROM Livros L
-LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
-GROUP BY L.LivroID, L.Titulo
-HAVING COUNT(E.EmprestimoID) > 0
-ORDER BY Percentual DESC;
+            SELECT
+                L.Titulo,
+                COUNT(E.EmprestimoID) AS TotalEmprestimos,
+                (SELECT COUNT(*) FROM Emprestimos) AS TotalGeral,
+                CAST(COUNT(E.EmprestimoID) * 100.0 / (SELECT COUNT(*) FROM Emprestimos) AS DECIMAL(5,2)) AS Percentual
+            FROM Livros L
+            LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
+            GROUP BY L.LivroID, L.Titulo
+            HAVING COUNT(E.EmprestimoID) > 0
+            ORDER BY Percentual DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 10:</strong> CTE recursivo 1-100</p>
         <code-block lang="sql">
-WITH Numeros AS (
-    SELECT 1 AS N
-    UNION ALL
-    SELECT N + 1
-    FROM Numeros
-    WHERE N < 100
-)
-SELECT N FROM Numeros
-OPTION (MAXRECURSION 100);
+            WITH Numeros AS (
+                SELECT 1 AS N
+                UNION ALL
+                SELECT N + 1
+                FROM Numeros
+                WHERE N < 100
+            )
+            SELECT N FROM Numeros
+            OPTION (MAXRECURSION 100);
         </code-block>
     </step>
 </procedure>

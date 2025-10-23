@@ -655,16 +655,16 @@ INCLUDE (DataEmprestimo, Status);
     <step>
         <p><strong>Solução 1:</strong> Livros com autores e categorias</p>
         <code-block lang="sql">
-        SELECT
-            L.Titulo,
-            A.Nome AS Autor,
-            C.Nome AS Categoria,
-            L.AnoPublicacao
-        FROM Livros L
-        INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
-        INNER JOIN Autores A ON LA.AutorID = A.AutorID
-        INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-        ORDER BY L.Titulo;
+            SELECT
+                L.Titulo,
+                A.Nome AS Autor,
+                C.Nome AS Categoria,
+                L.AnoPublicacao
+            FROM Livros L
+            INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
+            INNER JOIN Autores A ON LA.AutorID = A.AutorID
+            INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+            ORDER BY L.Titulo;
         </code-block>
     </step>
     <step>
