@@ -18,7 +18,7 @@
             <a href="Aula-DB-1-Instalação-SQL-Server.md" type="start" summary="Inicie o curso instalando e configurando o SQL Server e suas ferramentas.">
                 Aula 1: Instalação e Configuração do SQL Server
             </a>
-            <a href="Aula-DB-16-Projetos-e-Avaliações-DB.md" type="database" summary="Apresente seu projeto de banco de dados completo e conclua o curso.">
+            <a href="Aula-DB-16-Projetos-e-Avaliações-DB.md" type="tools" summary="Apresente seu projeto de banco de dados completo e conclua o curso.">
                 Aula 16: Projetos e Avaliações
             </a>
         </spotlight>

@@ -60,27 +60,33 @@
             <a href="Aula-10-DOM-e-JS.md" summary="Interaja com o HTML manipulando o DOM com JavaScript.">
                 Aula 10: DOM e JavaScript
             </a>
-            <a href="" summary="Entenda o controle de fluxo e o uso de funções.">
+            <!-- Aulas 11-15 serão adicionadas futuramente -->
+            <!--
+            <a href="Aula-11-Controle-de-Fluxo-e-Funções.md" summary="Entenda o controle de fluxo e o uso de funções.">
                 Aula 11: Controle de Fluxo e Funções em JavaScript
             </a>
-            <a href="" summary="Implemente eventos e crie interatividade.">
+            <a href="Aula-12-Eventos-e-Interatividade.md" summary="Implemente eventos e crie interatividade.">
                 Aula 12: Eventos e Interatividade
             </a>
+            -->
         </secondary>
 
         <!-- Tópicos adicionais: Conteúdos avançados em JavaScript -->
         <misc>
             <cards>
                 <title>Tópicos Avançados em JavaScript</title>
-                <a href="" summary="Aprenda sobre comunicação assíncrona e consumo de APIs.">
+                <!-- Aulas avançadas serão adicionadas futuramente -->
+                <!--
+                <a href="Aula-13-Comunicação-Assíncrona-e-APIs.md" summary="Aprenda sobre comunicação assíncrona e consumo de APIs.">
                     Aula 13: Comunicação Assíncrona e APIs
                 </a>
-                <a href="" summary="Utilize técnicas de debugging e ferramentas de desenvolvimento.">
+                <a href="Aula-14-Debugging-e-Ferramentas.md" summary="Utilize técnicas de debugging e ferramentas de desenvolvimento.">
                     Aula 14: Debugging e Ferramentas de Desenvolvimento
                 </a>
-                <a href="" summary="Descubra boas práticas, otimização e design responsivo.">
+                <a href="Aula-15-Boas-Práticas-e-Otimização.md" summary="Descubra boas práticas, otimização e design responsivo.">
                     Aula 15: Boas Práticas, Otimização e Design Responsivo
                 </a>
+                -->
             </cards>
         </misc>
     </section-starting-page>
