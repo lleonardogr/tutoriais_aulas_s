@@ -108,7 +108,7 @@ WHERE DATEPART(QUARTER, DataPedido) = DATEPART(QUARTER, GETDATE())
 
 ### Wildcards Detalhados
 
-```sql
+```SQL
 -- % : Zero ou mais caracteres
 SELECT Nome FROM Clientes WHERE Nome LIKE 'Ma%';       -- Começa com 'Ma'
 SELECT Nome FROM Clientes WHERE Nome LIKE '%Silva%';   -- Contém 'Silva'
@@ -454,25 +454,25 @@ WHERE Ativo <> 0 OR Ativo IS NULL;
 
 ### Busca de Texto Flexível
 
-```sql
--- Busca case-insensitive (padrão no SQL Server)
-SELECT Nome FROM Clientes WHERE Nome LIKE '%silva%';
-
--- Busca ignorando acentos (depende da collation)
-SELECT Nome FROM Clientes
-WHERE Nome COLLATE Latin1_General_CI_AI LIKE '%jose%';  -- Acha 'José'
-
--- Busca por múltiplas palavras (qualquer uma)
-SELECT Nome FROM Clientes
-WHERE Nome LIKE '%Silva%' OR Nome LIKE '%Santos%' OR Nome LIKE '%Costa%';
-
--- Busca por múltiplas palavras (todas)
-SELECT Nome FROM Clientes
-WHERE Nome LIKE '%João%' AND Nome LIKE '%Silva%';
-
--- Remover espaços extras antes de comparar
-SELECT Nome FROM Clientes
-WHERE LTRIM(RTRIM(Nome)) = 'João Silva';
+```SQL
+    -- Busca case-insensitive (padrão no SQL Server)
+    SELECT Nome FROM Clientes WHERE Nome LIKE '%silva%';
+    
+    -- Busca ignorando acentos (depende da collation)
+    SELECT Nome FROM Clientes
+    WHERE Nome COLLATE Latin1_General_CI_AI LIKE '%jose%';  -- Acha 'José'
+    
+    -- Busca por múltiplas palavras (qualquer uma)
+    SELECT Nome FROM Clientes
+    WHERE Nome LIKE '%Silva%' OR Nome LIKE '%Santos%' OR Nome LIKE '%Costa%';
+    
+    -- Busca por múltiplas palavras (todas)
+    SELECT Nome FROM Clientes
+    WHERE Nome LIKE '%João%' AND Nome LIKE '%Silva%';
+    
+    -- Remover espaços extras antes de comparar
+    SELECT Nome FROM Clientes
+    WHERE LTRIM(RTRIM(Nome)) = 'João Silva';
 ```
 
 ### Filtros Dinâmicos

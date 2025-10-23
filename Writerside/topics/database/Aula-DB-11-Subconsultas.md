@@ -572,47 +572,47 @@ ORDER BY TotalEmprestimos DESC;
 
 ### CTEs Recursivos
 
-```sql
--- Exemplo: Hierarquia de categorias (se houver relacionamento pai-filho)
-WITH CategoriasHierarquia AS (
-    -- Anchor: Categorias raiz
+```SQL
+    -- Exemplo: Hierarquia de categorias (se houver relacionamento pai-filho)
+    WITH CategoriasHierarquia AS (
+        -- Anchor: Categorias raiz
+        SELECT
+            CategoriaID,
+            Nome,
+            CategoriaPaiID,
+            0 AS Nivel,
+            CAST(Nome AS NVARCHAR(MAX)) AS Caminho
+        FROM Categorias
+        WHERE CategoriaPaiID IS NULL
+    
+        UNION ALL
+    
+        -- Recursive: Subcategorias
+        SELECT
+            C.CategoriaID,
+            C.Nome,
+            C.CategoriaPaiID,
+            CH.Nivel + 1,
+            CAST(CH.Caminho + ' > ' + C.Nome AS NVARCHAR(MAX))
+        FROM Categorias C
+        INNER JOIN CategoriasHierarquia CH ON C.CategoriaPaiID = CH.CategoriaID
+    )
     SELECT
-        CategoriaID,
-        Nome,
-        CategoriaPaiID,
-        0 AS Nivel,
-        CAST(Nome AS NVARCHAR(MAX)) AS Caminho
-    FROM Categorias
-    WHERE CategoriaPaiID IS NULL
-
-    UNION ALL
-
-    -- Recursive: Subcategorias
-    SELECT
-        C.CategoriaID,
-        C.Nome,
-        C.CategoriaPaiID,
-        CH.Nivel + 1,
-        CAST(CH.Caminho + ' > ' + C.Nome AS NVARCHAR(MAX))
-    FROM Categorias C
-    INNER JOIN CategoriasHierarquia CH ON C.CategoriaPaiID = CH.CategoriaID
-)
-SELECT
-    REPLICATE('  ', Nivel) + Nome AS NomeIndentado,
-    Nivel,
-    Caminho
-FROM CategoriasHierarquia
-ORDER BY Caminho;
-
--- Exemplo: Sequência de números
-WITH Numeros AS (
-    SELECT 1 AS N
-    UNION ALL
-    SELECT N + 1
-    FROM Numeros
-    WHERE N < 10
-)
-SELECT N FROM Numeros;
+        REPLICATE('  ', Nivel) + Nome AS NomeIndentado,
+        Nivel,
+        Caminho
+    FROM CategoriasHierarquia
+    ORDER BY Caminho;
+    
+    -- Exemplo: Sequência de números
+    WITH Numeros AS (
+        SELECT 1 AS N
+        UNION ALL
+        SELECT N + 1
+        FROM Numeros
+        WHERE N < 10
+    )
+    SELECT N FROM Numeros;
 ```
 
 ### Vantagens dos CTEs
