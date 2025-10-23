@@ -194,15 +194,13 @@ SELECT @@VERSION AS 'Versão do SQL Server';
     </step>
     <step>
         <code-block lang="sql">
--- Verificar nome da instância
-SELECT @@SERVERNAME AS 'Nome do Servidor';
-
--- Verificar bancos de dados disponíveis
-SELECT name AS 'Bancos de Dados'
-FROM sys.databases;
-
--- Verificar data/hora atual do servidor
-SELECT GETDATE() AS 'Data/Hora Atual';
+        -- Verificar nome da instância
+        SELECT @@SERVERNAME AS 'Nome do Servidor';
+        -- Verificar bancos de dados disponíveis
+        SELECT name AS 'Bancos de Dados'
+        FROM sys.databases;
+        -- Verificar data/hora atual do servidor
+        SELECT GETDATE() AS 'Data/Hora Atual';
         </code-block>
     </step>
 </procedure>

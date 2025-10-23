@@ -56,92 +56,84 @@ Antes de prosseguir, vamos criar um banco de dados com dados de exemplo:
     </step>
     <step>
         <code-block lang="sql">
--- Criar banco de dados
-CREATE DATABASE LojaDB;
-GO
-
-USE LojaDB;
-GO
-
--- Criar tabela de Clientes
-CREATE TABLE Clientes (
-    ClienteID INT PRIMARY KEY IDENTITY(1,1),
-    Nome NVARCHAR(100) NOT NULL,
-    Email VARCHAR(100),
-    Cidade NVARCHAR(50),
-    Estado CHAR(2),
-    DataCadastro DATE DEFAULT GETDATE(),
-    Ativo BIT DEFAULT 1
-);
-
--- Criar tabela de Produtos
-CREATE TABLE Produtos (
-    ProdutoID INT PRIMARY KEY IDENTITY(1,1),
-    Nome NVARCHAR(100) NOT NULL,
-    Categoria NVARCHAR(50),
-    Preco DECIMAL(10,2) NOT NULL,
-    Estoque INT DEFAULT 0,
-    Ativo BIT DEFAULT 1
-);
-
--- Criar tabela de Pedidos
-CREATE TABLE Pedidos (
-    PedidoID INT PRIMARY KEY IDENTITY(1,1),
-    ClienteID INT NOT NULL,
-    DataPedido DATE DEFAULT GETDATE(),
-    ValorTotal DECIMAL(10,2),
-    Status NVARCHAR(20) DEFAULT 'Pendente',
-    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
-);
-
--- Inserir dados de exemplo em Clientes
-INSERT INTO Clientes (Nome, Email, Cidade, Estado, DataCadastro, Ativo)
-VALUES
-    ('João Silva', 'joao@email.com', 'São Paulo', 'SP', '2023-01-15', 1),
-    ('Maria Santos', 'maria@email.com', 'Rio de Janeiro', 'RJ', '2023-02-20', 1),
-    ('Pedro Oliveira', 'pedro@email.com', 'Belo Horizonte', 'MG', '2023-03-10', 1),
-    ('Ana Costa', 'ana@email.com', 'São Paulo', 'SP', '2023-04-05', 1),
-    ('Carlos Lima', 'carlos@email.com', 'Curitiba', 'PR', '2023-05-12', 0),
-    ('Juliana Ferreira', 'juliana@email.com', 'Porto Alegre', 'RS', '2023-06-18', 1),
-    ('Roberto Alves', 'roberto@email.com', 'Salvador', 'BA', '2023-07-22', 1),
-    ('Fernanda Rocha', 'fernanda@email.com', 'São Paulo', 'SP', '2023-08-30', 1),
-    ('Lucas Martins', 'lucas@email.com', 'Brasília', 'DF', '2023-09-14', 1),
-    ('Patricia Souza', 'patricia@email.com', 'Recife', 'PE', '2023-10-25', 0);
-
--- Inserir dados de exemplo em Produtos
-INSERT INTO Produtos (Nome, Categoria, Preco, Estoque, Ativo)
-VALUES
-    ('Notebook Dell', 'Eletrônicos', 3500.00, 15, 1),
-    ('Mouse Logitech', 'Eletrônicos', 85.00, 50, 1),
-    ('Teclado Mecânico', 'Eletrônicos', 450.00, 30, 1),
-    ('Monitor LG 24"', 'Eletrônicos', 899.00, 20, 1),
-    ('Cadeira Gamer', 'Móveis', 1200.00, 10, 1),
-    ('Mesa para Computador', 'Móveis', 550.00, 8, 1),
-    ('Headset HyperX', 'Eletrônicos', 350.00, 25, 1),
-    ('Webcam Logitech', 'Eletrônicos', 280.00, 12, 1),
-    ('SSD 500GB', 'Eletrônicos', 400.00, 40, 1),
-    ('Memória RAM 16GB', 'Eletrônicos', 320.00, 35, 1),
-    ('Livro: SQL Descomplicado', 'Livros', 65.00, 100, 1),
-    ('Livro: Python para Iniciantes', 'Livros', 58.00, 80, 1),
-    ('Mousepad Grande', 'Acessórios', 45.00, 60, 1),
-    ('Cabo HDMI 2m', 'Acessórios', 25.00, 150, 1),
-    ('Hub USB 4 Portas', 'Acessórios', 75.00, 45, 1);
-
--- Inserir dados de exemplo em Pedidos
-INSERT INTO Pedidos (ClienteID, DataPedido, ValorTotal, Status)
-VALUES
-    (1, '2024-01-10', 3585.00, 'Entregue'),
-    (1, '2024-02-15', 450.00, 'Entregue'),
-    (2, '2024-01-20', 899.00, 'Entregue'),
-    (3, '2024-02-05', 1750.00, 'Em Transporte'),
-    (4, '2024-02-18', 4500.00, 'Entregue'),
-    (5, '2024-03-01', 280.00, 'Cancelado'),
-    (6, '2024-03-10', 775.00, 'Entregue'),
-    (7, '2024-03-15', 123.00, 'Pendente'),
-    (8, '2024-03-20', 3935.00, 'Em Processamento'),
-    (9, '2024-03-25', 720.00, 'Entregue');
-
-PRINT 'Banco de dados criado e populado com sucesso!';
+        -- Criar banco de dados
+        CREATE DATABASE LojaDB;
+        GO
+        USE LojaDB;
+        GO
+        -- Criar tabela de Clientes
+        CREATE TABLE Clientes (
+            ClienteID INT PRIMARY KEY IDENTITY(1,1),
+            Nome NVARCHAR(100) NOT NULL,
+            Email VARCHAR(100),
+            Cidade NVARCHAR(50),
+            Estado CHAR(2),
+            DataCadastro DATE DEFAULT GETDATE(),
+            Ativo BIT DEFAULT 1
+        );
+        -- Criar tabela de Produtos
+        CREATE TABLE Produtos (
+            ProdutoID INT PRIMARY KEY IDENTITY(1,1),
+            Nome NVARCHAR(100) NOT NULL,
+            Categoria NVARCHAR(50),
+            Preco DECIMAL(10,2) NOT NULL,
+            Estoque INT DEFAULT 0,
+            Ativo BIT DEFAULT 1
+        );
+        -- Criar tabela de Pedidos
+        CREATE TABLE Pedidos (
+            PedidoID INT PRIMARY KEY IDENTITY(1,1),
+            ClienteID INT NOT NULL,
+            DataPedido DATE DEFAULT GETDATE(),
+            ValorTotal DECIMAL(10,2),
+            Status NVARCHAR(20) DEFAULT 'Pendente',
+            FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+        );
+        -- Inserir dados de exemplo em Clientes
+        INSERT INTO Clientes (Nome, Email, Cidade, Estado, DataCadastro, Ativo)
+        VALUES
+            ('João Silva', 'joao@email.com', 'São Paulo', 'SP', '2023-01-15', 1),
+            ('Maria Santos', 'maria@email.com', 'Rio de Janeiro', 'RJ', '2023-02-20', 1),
+            ('Pedro Oliveira', 'pedro@email.com', 'Belo Horizonte', 'MG', '2023-03-10', 1),
+            ('Ana Costa', 'ana@email.com', 'São Paulo', 'SP', '2023-04-05', 1),
+            ('Carlos Lima', 'carlos@email.com', 'Curitiba', 'PR', '2023-05-12', 0),
+            ('Juliana Ferreira', 'juliana@email.com', 'Porto Alegre', 'RS', '2023-06-18', 1),
+            ('Roberto Alves', 'roberto@email.com', 'Salvador', 'BA', '2023-07-22', 1),
+            ('Fernanda Rocha', 'fernanda@email.com', 'São Paulo', 'SP', '2023-08-30', 1),
+            ('Lucas Martins', 'lucas@email.com', 'Brasília', 'DF', '2023-09-14', 1),
+            ('Patricia Souza', 'patricia@email.com', 'Recife', 'PE', '2023-10-25', 0);
+        -- Inserir dados de exemplo em Produtos
+        INSERT INTO Produtos (Nome, Categoria, Preco, Estoque, Ativo)
+        VALUES
+            ('Notebook Dell', 'Eletrônicos', 3500.00, 15, 1),
+            ('Mouse Logitech', 'Eletrônicos', 85.00, 50, 1),
+            ('Teclado Mecânico', 'Eletrônicos', 450.00, 30, 1),
+            ('Monitor LG 24"', 'Eletrônicos', 899.00, 20, 1),
+            ('Cadeira Gamer', 'Móveis', 1200.00, 10, 1),
+            ('Mesa para Computador', 'Móveis', 550.00, 8, 1),
+            ('Headset HyperX', 'Eletrônicos', 350.00, 25, 1),
+            ('Webcam Logitech', 'Eletrônicos', 280.00, 12, 1),
+            ('SSD 500GB', 'Eletrônicos', 400.00, 40, 1),
+            ('Memória RAM 16GB', 'Eletrônicos', 320.00, 35, 1),
+            ('Livro: SQL Descomplicado', 'Livros', 65.00, 100, 1),
+            ('Livro: Python para Iniciantes', 'Livros', 58.00, 80, 1),
+            ('Mousepad Grande', 'Acessórios', 45.00, 60, 1),
+            ('Cabo HDMI 2m', 'Acessórios', 25.00, 150, 1),
+            ('Hub USB 4 Portas', 'Acessórios', 75.00, 45, 1);
+        -- Inserir dados de exemplo em Pedidos
+        INSERT INTO Pedidos (ClienteID, DataPedido, ValorTotal, Status)
+        VALUES
+            (1, '2024-01-10', 3585.00, 'Entregue'),
+            (1, '2024-02-15', 450.00, 'Entregue'),
+            (2, '2024-01-20', 899.00, 'Entregue'),
+            (3, '2024-02-05', 1750.00, 'Em Transporte'),
+            (4, '2024-02-18', 4500.00, 'Entregue'),
+            (5, '2024-03-01', 280.00, 'Cancelado'),
+            (6, '2024-03-10', 775.00, 'Entregue'),
+            (7, '2024-03-15', 123.00, 'Pendente'),
+            (8, '2024-03-20', 3935.00, 'Em Processamento'),
+            (9, '2024-03-25', 720.00, 'Entregue');
+        PRINT 'Banco de dados criado e populado com sucesso!';
         </code-block>
     </step>
     <step>
@@ -149,9 +141,9 @@ PRINT 'Banco de dados criado e populado com sucesso!';
     </step>
     <step>
         <code-block lang="sql">
-SELECT COUNT(*) AS TotalClientes FROM Clientes;
-SELECT COUNT(*) AS TotalProdutos FROM Produtos;
-SELECT COUNT(*) AS TotalPedidos FROM Pedidos;
+        SELECT COUNT(*) AS TotalClientes FROM Clientes;
+        SELECT COUNT(*) AS TotalProdutos FROM Produtos;
+        SELECT COUNT(*) AS TotalPedidos FROM Pedidos;
         </code-block>
     </step>
 </procedure>

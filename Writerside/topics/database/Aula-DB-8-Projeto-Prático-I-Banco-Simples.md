@@ -134,82 +134,75 @@ Vamos começar criando o banco de dados e as tabelas:
     </step>
     <step>
         <code-block lang="sql">
--- Criar banco de dados
-CREATE DATABASE BibliotecaDB;
-GO
-
-USE BibliotecaDB;
-GO
+            -- Criar banco de dados
+            CREATE DATABASE BibliotecaDB;
+            GO
+            USE BibliotecaDB;
+            GO
         </code-block>
     </step>
     <step>
         <p>Crie as tabelas na ordem correta (tabelas sem dependências primeiro)</p>
     </step>
     <step>
-        <code-block lang="sql">
--- Tabela Categorias
-CREATE TABLE Categorias (
-    CategoriaID INT PRIMARY KEY IDENTITY(1,1),
-    Nome NVARCHAR(50) NOT NULL UNIQUE,
-    Descricao NVARCHAR(200)
-);
-
--- Tabela Autores
-CREATE TABLE Autores (
-    AutorID INT PRIMARY KEY IDENTITY(1,1),
-    Nome NVARCHAR(100) NOT NULL,
-    DataNascimento DATE,
-    Nacionalidade NVARCHAR(50),
-    Biografia NVARCHAR(MAX)
-);
-
--- Tabela Membros
-CREATE TABLE Membros (
-    MembroID INT PRIMARY KEY IDENTITY(1,1),
-    Nome NVARCHAR(100) NOT NULL,
-    Email VARCHAR(100) UNIQUE,
-    Telefone VARCHAR(20),
-    Endereco NVARCHAR(200),
-    DataCadastro DATE DEFAULT GETDATE(),
-    Ativo BIT DEFAULT 1
-);
-
--- Tabela Livros
-CREATE TABLE Livros (
-    LivroID INT PRIMARY KEY IDENTITY(1,1),
-    Titulo NVARCHAR(200) NOT NULL,
-    ISBN VARCHAR(20) UNIQUE,
-    AnoPublicacao INT,
-    NumCopias INT DEFAULT 1 CHECK (NumCopias >= 0),
-    NumCopiasDisponiveis INT DEFAULT 1 CHECK (NumCopiasDisponiveis >= 0),
-    CategoriaID INT NOT NULL,
-    FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID),
-    CONSTRAINT CK_Livros_CopiasDisponiveis CHECK (NumCopiasDisponiveis <= NumCopias)
-);
-
--- Tabela associativa LivroAutor
-CREATE TABLE LivroAutor (
-    LivroID INT NOT NULL,
-    AutorID INT NOT NULL,
-    PRIMARY KEY (LivroID, AutorID),
-    FOREIGN KEY (LivroID) REFERENCES Livros(LivroID) ON DELETE CASCADE,
-    FOREIGN KEY (AutorID) REFERENCES Autores(AutorID) ON DELETE CASCADE
-);
-
--- Tabela Empréstimos
-CREATE TABLE Emprestimos (
-    EmprestimoID INT PRIMARY KEY IDENTITY(1,1),
-    LivroID INT NOT NULL,
-    MembroID INT NOT NULL,
-    DataEmprestimo DATE DEFAULT GETDATE(),
-    DataDevolucaoPrevista DATE NOT NULL,
-    DataDevolucaoReal DATE,
-    Status NVARCHAR(20) DEFAULT 'Ativo' CHECK (Status IN ('Ativo', 'Devolvido', 'Atrasado')),
-    FOREIGN KEY (LivroID) REFERENCES Livros(LivroID),
-    FOREIGN KEY (MembroID) REFERENCES Membros(MembroID)
-);
-
-PRINT 'Estrutura do banco de dados criada com sucesso!';
+    <code-block lang="sql">
+            -- Tabela Categorias
+            CREATE TABLE Categorias (
+                CategoriaID INT PRIMARY KEY IDENTITY(1,1),
+                Nome NVARCHAR(50) NOT NULL UNIQUE,
+                Descricao NVARCHAR(200)
+            );
+            -- Tabela Autores
+            CREATE TABLE Autores (
+                AutorID INT PRIMARY KEY IDENTITY(1,1),
+                Nome NVARCHAR(100) NOT NULL,
+                DataNascimento DATE,
+                Nacionalidade NVARCHAR(50),
+                Biografia NVARCHAR(MAX)
+            );
+            -- Tabela Membros
+            CREATE TABLE Membros (
+                MembroID INT PRIMARY KEY IDENTITY(1,1),
+                Nome NVARCHAR(100) NOT NULL,
+                Email VARCHAR(100) UNIQUE,
+                Telefone VARCHAR(20),
+                Endereco NVARCHAR(200),
+                DataCadastro DATE DEFAULT GETDATE(),
+                Ativo BIT DEFAULT 1
+            );
+            -- Tabela Livros
+            CREATE TABLE Livros (
+                LivroID INT PRIMARY KEY IDENTITY(1,1),
+                Titulo NVARCHAR(200) NOT NULL,
+                ISBN VARCHAR(20) UNIQUE,
+                AnoPublicacao INT,
+                NumCopias INT DEFAULT 1 CHECK (NumCopias >= 0),
+                NumCopiasDisponiveis INT DEFAULT 1 CHECK (NumCopiasDisponiveis >= 0),
+                CategoriaID INT NOT NULL,
+                FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID),
+                CONSTRAINT CK_Livros_CopiasDisponiveis CHECK (NumCopiasDisponiveis <= NumCopias)
+            );
+            -- Tabela associativa LivroAutor
+            CREATE TABLE LivroAutor (
+                LivroID INT NOT NULL,
+                AutorID INT NOT NULL,
+                PRIMARY KEY (LivroID, AutorID),
+                FOREIGN KEY (LivroID) REFERENCES Livros(LivroID) ON DELETE CASCADE,
+                FOREIGN KEY (AutorID) REFERENCES Autores(AutorID) ON DELETE CASCADE
+            );
+            -- Tabela Empréstimos
+            CREATE TABLE Emprestimos (
+                EmprestimoID INT PRIMARY KEY IDENTITY(1,1),
+                LivroID INT NOT NULL,
+                MembroID INT NOT NULL,
+                DataEmprestimo DATE DEFAULT GETDATE(),
+                DataDevolucaoPrevista DATE NOT NULL,
+                DataDevolucaoReal DATE,
+                Status NVARCHAR(20) DEFAULT 'Ativo' CHECK (Status IN ('Ativo', 'Devolvido', 'Atrasado')),
+                FOREIGN KEY (LivroID) REFERENCES Livros(LivroID),
+                FOREIGN KEY (MembroID) REFERENCES Membros(MembroID)
+            );
+            PRINT 'Estrutura do banco de dados criada com sucesso!';
         </code-block>
     </step>
     <step>
@@ -217,13 +210,12 @@ PRINT 'Estrutura do banco de dados criada com sucesso!';
     </step>
     <step>
         <code-block lang="sql">
--- Ver todas as tabelas
-SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_TYPE = 'BASE TABLE'
-ORDER BY TABLE_NAME;
-
--- Ver estrutura de uma tabela específica
-EXEC sp_help 'Livros';
+        -- Ver todas as tabelas
+        SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES
+        WHERE TABLE_TYPE = 'BASE TABLE'
+        ORDER BY TABLE_NAME;
+        -- Ver estrutura de uma tabela específica
+        EXEC sp_help 'Livros';
         </code-block>
     </step>
 </procedure>
@@ -238,39 +230,37 @@ Agora vamos popular o banco com dados realistas:
     </step>
     <step>
         <code-block lang="sql">
-INSERT INTO Categorias (Nome, Descricao) VALUES
-    ('Ficção', 'Obras de ficção literária'),
-    ('Não-ficção', 'Obras baseadas em fatos reais'),
-    ('Romance', 'Histórias românticas'),
-    ('Suspense', 'Thrillers e mistérios'),
-    ('Ficção Científica', 'Obras de sci-fi'),
-    ('Fantasia', 'Mundos fantásticos e magia'),
-    ('Biografia', 'Histórias de vida reais'),
-    ('História', 'Livros sobre história'),
-    ('Tecnologia', 'Livros técnicos e de TI'),
-    ('Autoajuda', 'Desenvolvimento pessoal');
-
-SELECT * FROM Categorias;
+        INSERT INTO Categorias (Nome, Descricao) VALUES
+            ('Ficção', 'Obras de ficção literária'),
+            ('Não-ficção', 'Obras baseadas em fatos reais'),
+            ('Romance', 'Histórias românticas'),
+            ('Suspense', 'Thrillers e mistérios'),
+            ('Ficção Científica', 'Obras de sci-fi'),
+            ('Fantasia', 'Mundos fantásticos e magia'),
+            ('Biografia', 'Histórias de vida reais'),
+            ('História', 'Livros sobre história'),
+            ('Tecnologia', 'Livros técnicos e de TI'),
+            ('Autoajuda', 'Desenvolvimento pessoal');
+        SELECT * FROM Categorias;
         </code-block>
-    </step>
-    <step>
-        <p>Inserir Autores</p>
-    </step>
-    <step>
-        <code-block lang="sql">
-INSERT INTO Autores (Nome, DataNascimento, Nacionalidade, Biografia) VALUES
-    ('Machado de Assis', '1839-06-21', 'Brasileira', 'Maior escritor brasileiro, fundador da ABL'),
-    ('Clarice Lispector', '1920-12-10', 'Brasileira', 'Escritora e jornalista ucraniana naturalizada brasileira'),
-    ('J.K. Rowling', '1965-07-31', 'Britânica', 'Autora da série Harry Potter'),
-    ('George Orwell', '1903-06-25', 'Britânica', 'Autor de 1984 e A Revolução dos Bichos'),
-    ('Isaac Asimov', '1920-01-02', 'Americana', 'Mestre da ficção científica'),
-    ('Agatha Christie', '1890-09-15', 'Britânica', 'Rainha do crime'),
-    ('Stephen King', '1947-09-21', 'Americana', 'Mestre do terror'),
-    ('Neil Gaiman', '1960-11-10', 'Britânica', 'Autor de fantasia moderna'),
-    ('Paulo Coelho', '1947-08-24', 'Brasileira', 'Autor de O Alquimista'),
-    ('Yuval Noah Harari', '1976-02-24', 'Israelense', 'Historiador e autor de Sapiens');
-
-SELECT * FROM Autores;
+        </step>
+            <step>
+                <p>Inserir Autores</p>
+            </step>
+        <step>
+            <code-block lang="sql">
+            INSERT INTO Autores (Nome, DataNascimento, Nacionalidade, Biografia) VALUES
+            ('Machado de Assis', '1839-06-21', 'Brasileira', 'Maior escritor brasileiro, fundador da ABL'),
+            ('Clarice Lispector', '1920-12-10', 'Brasileira', 'Escritora e jornalista ucraniana naturalizada brasileira'),
+            ('J.K. Rowling', '1965-07-31', 'Britânica', 'Autora da série Harry Potter'),
+            ('George Orwell', '1903-06-25', 'Britânica', 'Autor de 1984 e A Revolução dos Bichos'),
+            ('Isaac Asimov', '1920-01-02', 'Americana', 'Mestre da ficção científica'),
+            ('Agatha Christie', '1890-09-15', 'Britânica', 'Rainha do crime'),
+            ('Stephen King', '1947-09-21', 'Americana', 'Mestre do terror'),
+            ('Neil Gaiman', '1960-11-10', 'Britânica', 'Autor de fantasia moderna'),
+            ('Paulo Coelho', '1947-08-24', 'Brasileira', 'Autor de O Alquimista'),
+            ('Yuval Noah Harari', '1976-02-24', 'Israelense', 'Historiador e autor de Sapiens');
+            SELECT * FROM Autores;
         </code-block>
     </step>
     <step>
@@ -278,19 +268,18 @@ SELECT * FROM Autores;
     </step>
     <step>
         <code-block lang="sql">
-INSERT INTO Membros (Nome, Email, Telefone, Endereco) VALUES
-    ('Ana Silva', 'ana.silva@email.com', '(11) 98765-4321', 'Rua das Flores, 123 - São Paulo'),
-    ('Bruno Costa', 'bruno.costa@email.com', '(21) 97654-3210', 'Av. Atlântica, 456 - Rio de Janeiro'),
-    ('Carla Souza', 'carla.souza@email.com', '(31) 96543-2109', 'Rua Minas, 789 - Belo Horizonte'),
-    ('Daniel Pereira', 'daniel.p@email.com', '(41) 95432-1098', 'Rua Paraná, 321 - Curitiba'),
-    ('Elisa Rodrigues', 'elisa.r@email.com', '(51) 94321-0987', 'Av. Borges, 654 - Porto Alegre'),
-    ('Fernando Lima', 'fernando.lima@email.com', '(61) 93210-9876', 'SQN 308 - Brasília'),
-    ('Gabriela Santos', 'gabi.santos@email.com', '(71) 92109-8765', 'Rua Bahia, 987 - Salvador'),
-    ('Henrique Alves', 'henrique.a@email.com', '(81) 91098-7654', 'Av. Recife, 147 - Recife'),
-    ('Isabela Martins', 'isa.martins@email.com', '(85) 90987-6543', 'Rua Ceará, 258 - Fortaleza'),
-    ('João Oliveira', 'joao.oli@email.com', '(92) 89876-5432', 'Av. Amazonas, 369 - Manaus');
-
-SELECT * FROM Membros;
+        INSERT INTO Membros (Nome, Email, Telefone, Endereco) VALUES
+            ('Ana Silva', 'ana.silva@email.com', '(11) 98765-4321', 'Rua das Flores, 123 - São Paulo'),
+            ('Bruno Costa', 'bruno.costa@email.com', '(21) 97654-3210', 'Av. Atlântica, 456 - Rio de Janeiro'),
+            ('Carla Souza', 'carla.souza@email.com', '(31) 96543-2109', 'Rua Minas, 789 - Belo Horizonte'),
+            ('Daniel Pereira', 'daniel.p@email.com', '(41) 95432-1098', 'Rua Paraná, 321 - Curitiba'),
+            ('Elisa Rodrigues', 'elisa.r@email.com', '(51) 94321-0987', 'Av. Borges, 654 - Porto Alegre'),
+            ('Fernando Lima', 'fernando.lima@email.com', '(61) 93210-9876', 'SQN 308 - Brasília'),
+            ('Gabriela Santos', 'gabi.santos@email.com', '(71) 92109-8765', 'Rua Bahia, 987 - Salvador'),
+            ('Henrique Alves', 'henrique.a@email.com', '(81) 91098-7654', 'Av. Recife, 147 - Recife'),
+            ('Isabela Martins', 'isa.martins@email.com', '(85) 90987-6543', 'Rua Ceará, 258 - Fortaleza'),
+            ('João Oliveira', 'joao.oli@email.com', '(92) 89876-5432', 'Av. Amazonas, 369 - Manaus');
+        SELECT * FROM Membros;
         </code-block>
     </step>
     <step>
@@ -298,24 +287,23 @@ SELECT * FROM Membros;
     </step>
     <step>
         <code-block lang="sql">
-INSERT INTO Livros (Titulo, ISBN, AnoPublicacao, NumCopias, NumCopiasDisponiveis, CategoriaID) VALUES
-    ('Dom Casmurro', '978-8535911664', 1899, 3, 3, 1),
-    ('A Hora da Estrela', '978-8520925683', 1977, 2, 2, 1),
-    ('Harry Potter e a Pedra Filosofal', '978-8532530788', 1997, 5, 4, 6),
-    ('1984', '978-8535914849', 1949, 4, 3, 1),
-    ('Fundação', '978-8576570646', 1951, 2, 2, 5),
-    ('Assassinato no Expresso do Oriente', '978-8595084841', 1934, 3, 2, 4),
-    ('O Iluminado', '978-8581050201', 1977, 3, 1, 4),
-    ('Deuses Americanos', '978-8580573466', 2001, 2, 2, 6),
-    ('O Alquimista', '978-8576654667', 1988, 4, 3, 1),
-    ('Sapiens', '978-8525432629', 2011, 3, 2, 2),
-    ('21 Lições para o Século 21', '978-8535930733', 2018, 2, 2, 2),
-    ('A Revolução dos Bichos', '978-8535909555', 1945, 3, 3, 1),
-    ('Memórias Póstumas de Brás Cubas', '978-8535911671', 1881, 2, 1, 1),
-    ('A Paixão Segundo G.H.', '978-8520936610', 1964, 2, 2, 1),
-    ('Harry Potter e a Câmara Secreta', '978-8532530795', 1998, 5, 5, 6);
-
-SELECT * FROM Livros;
+        INSERT INTO Livros (Titulo, ISBN, AnoPublicacao, NumCopias, NumCopiasDisponiveis, CategoriaID) VALUES
+            ('Dom Casmurro', '978-8535911664', 1899, 3, 3, 1),
+            ('A Hora da Estrela', '978-8520925683', 1977, 2, 2, 1),
+            ('Harry Potter e a Pedra Filosofal', '978-8532530788', 1997, 5, 4, 6),
+            ('1984', '978-8535914849', 1949, 4, 3, 1),
+            ('Fundação', '978-8576570646', 1951, 2, 2, 5),
+            ('Assassinato no Expresso do Oriente', '978-8595084841', 1934, 3, 2, 4),
+            ('O Iluminado', '978-8581050201', 1977, 3, 1, 4),
+            ('Deuses Americanos', '978-8580573466', 2001, 2, 2, 6),
+            ('O Alquimista', '978-8576654667', 1988, 4, 3, 1),
+            ('Sapiens', '978-8525432629', 2011, 3, 2, 2),
+            ('21 Lições para o Século 21', '978-8535930733', 2018, 2, 2, 2),
+            ('A Revolução dos Bichos', '978-8535909555', 1945, 3, 3, 1),
+            ('Memórias Póstumas de Brás Cubas', '978-8535911671', 1881, 2, 1, 1),
+            ('A Paixão Segundo G.H.', '978-8520936610', 1964, 2, 2, 1),
+            ('Harry Potter e a Câmara Secreta', '978-8532530795', 1998, 5, 5, 6);
+        SELECT * FROM Livros;
         </code-block>
     </step>
     <step>
@@ -323,29 +311,28 @@ SELECT * FROM Livros;
     </step>
     <step>
         <code-block lang="sql">
-INSERT INTO LivroAutor (LivroID, AutorID) VALUES
-    (1, 1),   -- Dom Casmurro - Machado de Assis
-    (2, 2),   -- A Hora da Estrela - Clarice Lispector
-    (3, 3),   -- Harry Potter 1 - J.K. Rowling
-    (4, 4),   -- 1984 - George Orwell
-    (5, 5),   -- Fundação - Isaac Asimov
-    (6, 6),   -- Assassinato no Expresso - Agatha Christie
-    (7, 7),   -- O Iluminado - Stephen King
-    (8, 8),   -- Deuses Americanos - Neil Gaiman
-    (9, 9),   -- O Alquimista - Paulo Coelho
-    (10, 10), -- Sapiens - Yuval Harari
-    (11, 10), -- 21 Lições - Yuval Harari
-    (12, 4),  -- Revolução dos Bichos - George Orwell
-    (13, 1),  -- Memórias Póstumas - Machado de Assis
-    (14, 2),  -- A Paixão - Clarice Lispector
-    (15, 3);  -- Harry Potter 2 - J.K. Rowling
-
--- Verificar livros com seus autores
-SELECT L.Titulo, A.Nome AS Autor
-FROM Livros L
-INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
-INNER JOIN Autores A ON LA.AutorID = A.AutorID
-ORDER BY L.Titulo;
+            INSERT INTO LivroAutor (LivroID, AutorID) VALUES
+                (1, 1),   -- Dom Casmurro - Machado de Assis
+                (2, 2),   -- A Hora da Estrela - Clarice Lispector
+                (3, 3),   -- Harry Potter 1 - J.K. Rowling
+                (4, 4),   -- 1984 - George Orwell
+                (5, 5),   -- Fundação - Isaac Asimov
+                (6, 6),   -- Assassinato no Expresso - Agatha Christie
+                (7, 7),   -- O Iluminado - Stephen King
+                (8, 8),   -- Deuses Americanos - Neil Gaiman
+                (9, 9),   -- O Alquimista - Paulo Coelho
+                (10, 10), -- Sapiens - Yuval Harari
+                (11, 10), -- 21 Lições - Yuval Harari
+                (12, 4),  -- Revolução dos Bichos - George Orwell
+                (13, 1),  -- Memórias Póstumas - Machado de Assis
+                (14, 2),  -- A Paixão - Clarice Lispector
+                (15, 3);  -- Harry Potter 2 - J.K. Rowling
+            -- Verificar livros com seus autores
+            SELECT L.Titulo, A.Nome AS Autor
+            FROM Livros L
+            INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
+            INNER JOIN Autores A ON LA.AutorID = A.AutorID
+            ORDER BY L.Titulo;
         </code-block>
     </step>
     <step>
@@ -353,31 +340,27 @@ ORDER BY L.Titulo;
     </step>
     <step>
         <code-block lang="sql">
--- Inserir empréstimos (alguns já devolvidos, outros ativos)
-INSERT INTO Emprestimos (LivroID, MembroID, DataEmprestimo, DataDevolucaoPrevista, DataDevolucaoReal, Status) VALUES
-    -- Empréstimos devolvidos
-    (1, 1, '2024-09-01', '2024-09-15', '2024-09-14', 'Devolvido'),
-    (4, 2, '2024-09-05', '2024-09-19', '2024-09-18', 'Devolvido'),
-    (9, 3, '2024-09-10', '2024-09-24', '2024-09-23', 'Devolvido'),
-
-    -- Empréstimos ativos (dentro do prazo)
-    (3, 1, '2024-10-10', '2024-10-24', NULL, 'Ativo'),
-    (6, 4, '2024-10-12', '2024-10-26', NULL, 'Ativo'),
-    (10, 5, '2024-10-13', '2024-10-27', NULL, 'Ativo'),
-    (7, 6, '2024-10-14', '2024-10-28', NULL, 'Ativo'),
-    (13, 7, '2024-10-15', '2024-10-29', NULL, 'Ativo'),
-
-    -- Empréstimos atrasados
-    (4, 8, '2024-09-20', '2024-10-04', NULL, 'Atrasado'),
-    (7, 9, '2024-09-25', '2024-10-09', NULL, 'Atrasado');
-
--- Atualizar número de cópias disponíveis
-UPDATE Livros SET NumCopiasDisponiveis = NumCopias - (
-    SELECT COUNT(*) FROM Emprestimos
-    WHERE LivroID = Livros.LivroID AND Status = 'Ativo'
-);
-
-SELECT * FROM Emprestimos;
+        -- Inserir empréstimos (alguns já devolvidos, outros ativos)
+        INSERT INTO Emprestimos (LivroID, MembroID, DataEmprestimo, DataDevolucaoPrevista, DataDevolucaoReal, Status) VALUES
+            -- Empréstimos devolvidos
+            (1, 1, '2024-09-01', '2024-09-15', '2024-09-14', 'Devolvido'),
+            (4, 2, '2024-09-05', '2024-09-19', '2024-09-18', 'Devolvido'),
+            (9, 3, '2024-09-10', '2024-09-24', '2024-09-23', 'Devolvido'),
+        -- Empréstimos ativos (dentro do prazo)
+            (3, 1, '2024-10-10', '2024-10-24', NULL, 'Ativo'),
+            (6, 4, '2024-10-12', '2024-10-26', NULL, 'Ativo'),
+            (10, 5, '2024-10-13', '2024-10-27', NULL, 'Ativo'),
+            (7, 6, '2024-10-14', '2024-10-28', NULL, 'Ativo'),
+            (13, 7, '2024-10-15', '2024-10-29', NULL, 'Ativo'),
+        -- Empréstimos atrasados
+            (4, 8, '2024-09-20', '2024-10-04', NULL, 'Atrasado'),
+            (7, 9, '2024-09-25', '2024-10-09', NULL, 'Atrasado');
+        -- Atualizar número de cópias disponíveis
+        UPDATE Livros SET NumCopiasDisponiveis = NumCopias - (
+            SELECT COUNT(*) FROM Emprestimos
+            WHERE LivroID = Livros.LivroID AND Status = 'Ativo'
+        );
+        SELECT * FROM Emprestimos;
         </code-block>
     </step>
 </procedure>
