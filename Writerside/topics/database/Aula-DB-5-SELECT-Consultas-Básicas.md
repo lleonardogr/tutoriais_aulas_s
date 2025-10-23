@@ -555,7 +555,7 @@ FROM Pedidos;
 SELECT
     Nome,
     DataCadastro,
-    DATEDIFF(DAY, DataCadastro, GETDATE()) AS DiasDesdeC adastro
+    DATEDIFF(DAY, DataCadastro, GETDATE()) AS DiasDesdeCadastro
 FROM Clientes;
 
 -- FORMAT: Formatar data (SQL Server 2012+)

@@ -82,7 +82,7 @@ FROM Tabela1, Tabela2
 WHERE Tabela1.Coluna = Tabela2.Coluna;
 ```
 
-### Exemplos Práticos
+### Exemplos Práticos de INNER JOIN
 
 ```sql
 -- 1. Livros com suas categorias
@@ -156,7 +156,7 @@ O LEFT JOIN retorna **todos** os registros da tabela esquerda e os correspondent
 - Para encontrar registros sem correspondência (órfãos)
 - Para incluir informações opcionais
 
-### Exemplos Práticos
+### Exemplos Práticos de LEFT JOIN
 
 ```sql
 -- 1. Todos os livros, com ou sem empréstimos

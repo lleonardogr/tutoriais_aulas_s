@@ -25,7 +25,7 @@ GO
 
 O comando INSERT adiciona novos registros em uma tabela.
 
-### Sintaxe Básica
+### Sintaxe Básica do INSERT
 
 ```sql
 -- Sintaxe 1: Especificando colunas
@@ -170,7 +170,7 @@ VALUES
 
 O comando UPDATE modifica dados existentes em uma tabela.
 
-### Sintaxe Básica
+### Sintaxe Básica do UPDATE
 
 ```sql
 UPDATE Tabela
@@ -301,7 +301,7 @@ WHERE Estoque = 0;
 
 O comando DELETE remove registros de uma tabela.
 
-### Sintaxe Básica
+### Sintaxe Básica do DELETE
 
 ```sql
 DELETE FROM Tabela
@@ -468,7 +468,7 @@ DROP TABLE TesteDelete;
 
 Transações garantem que um conjunto de operações seja executado completamente ou não seja executado.
 
-### Sintaxe Básica
+### Sintaxe Básica de Transações
 
 ```sql
 BEGIN TRANSACTION;  -- ou BEGIN TRAN
