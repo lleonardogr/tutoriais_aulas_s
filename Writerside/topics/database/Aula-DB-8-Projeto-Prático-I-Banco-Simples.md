@@ -607,74 +607,74 @@ SELECT @@ROWCOUNT AS EmprestimosAtrasados;
     <step>
         <p><strong>Solução Desafio 2:</strong> Membros mais ativos</p>
         <code-block lang="sql">
-SELECT TOP 5
-    M.Nome,
-    M.Email,
-    COUNT(E.EmprestimoID) AS TotalEmprestimos,
-    SUM(CASE WHEN E.Status = 'Ativo' THEN 1 ELSE 0 END) AS EmprestimosAtivos
-FROM Membros M
-LEFT JOIN Emprestimos E ON M.MembroID = E.MembroID
-GROUP BY M.MembroID, M.Nome, M.Email
-ORDER BY TotalEmprestimos DESC;
+        SELECT TOP 5
+            M.Nome,
+            M.Email,
+            COUNT(E.EmprestimoID) AS TotalEmprestimos,
+            SUM(CASE WHEN E.Status = 'Ativo' THEN 1 ELSE 0 END) AS EmprestimosAtivos
+        FROM Membros M
+        LEFT JOIN Emprestimos E ON M.MembroID = E.MembroID
+        GROUP BY M.MembroID, M.Nome, M.Email
+        ORDER BY TotalEmprestimos DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução Desafio 3:</strong> Tabela de Multas</p>
         <code-block lang="sql">
-CREATE TABLE Multas (
-    MultaID INT PRIMARY KEY IDENTITY(1,1),
-    EmprestimoID INT NOT NULL,
-    ValorMulta DECIMAL(10,2) NOT NULL,
-    DataGeracao DATE DEFAULT GETDATE(),
-    Pago BIT DEFAULT 0,
-    DataPagamento DATE,
-    FOREIGN KEY (EmprestimoID) REFERENCES Emprestimos(EmprestimoID)
-);
+        CREATE TABLE Multas (
+            MultaID INT PRIMARY KEY IDENTITY(1,1),
+            EmprestimoID INT NOT NULL,
+            ValorMulta DECIMAL(10,2) NOT NULL,
+            DataGeracao DATE DEFAULT GETDATE(),
+            Pago BIT DEFAULT 0,
+            DataPagamento DATE,
+            FOREIGN KEY (EmprestimoID) REFERENCES Emprestimos(EmprestimoID)
+        );
         </code-block>
     </step>
     <step>
         <p><strong>Solução Desafio 4:</strong> Calcular multas por atraso</p>
         <code-block lang="sql">
-SELECT
-    M.Nome AS Membro,
-    L.Titulo AS Livro,
-    E.DataDevolucaoPrevista,
-    DATEDIFF(DAY, E.DataDevolucaoPrevista, GETDATE()) AS DiasAtraso,
-    DATEDIFF(DAY, E.DataDevolucaoPrevista, GETDATE()) * 1.00 AS MultaDevida
-FROM Emprestimos E
-INNER JOIN Membros M ON E.MembroID = M.MembroID
-INNER JOIN Livros L ON E.LivroID = L.LivroID
-WHERE E.Status = 'Atrasado'
-ORDER BY DiasAtraso DESC;
+        SELECT
+            M.Nome AS Membro,
+            L.Titulo AS Livro,
+            E.DataDevolucaoPrevista,
+            DATEDIFF(DAY, E.DataDevolucaoPrevista, GETDATE()) AS DiasAtraso,
+            DATEDIFF(DAY, E.DataDevolucaoPrevista, GETDATE()) * 1.00 AS MultaDevida
+        FROM Emprestimos E
+        INNER JOIN Membros M ON E.MembroID = M.MembroID
+        INNER JOIN Livros L ON E.LivroID = L.LivroID
+        WHERE E.Status = 'Atrasado'
+        ORDER BY DiasAtraso DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução Desafio 6:</strong> Relatório mensal por categoria</p>
         <code-block lang="sql">
-SELECT
-    FORMAT(E.DataEmprestimo, 'yyyy-MM') AS MesAno,
-    C.Nome AS Categoria,
-    COUNT(E.EmprestimoID) AS TotalEmprestimos
-FROM Emprestimos E
-INNER JOIN Livros L ON E.LivroID = L.LivroID
-INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-WHERE E.DataEmprestimo >= DATEADD(MONTH, -6, GETDATE())
-GROUP BY FORMAT(E.DataEmprestimo, 'yyyy-MM'), C.CategoriaID, C.Nome
-ORDER BY MesAno DESC, TotalEmprestimos DESC;
+        SELECT
+            FORMAT(E.DataEmprestimo, 'yyyy-MM') AS MesAno,
+            C.Nome AS Categoria,
+            COUNT(E.EmprestimoID) AS TotalEmprestimos
+        FROM Emprestimos E
+        INNER JOIN Livros L ON E.LivroID = L.LivroID
+        INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+        WHERE E.DataEmprestimo >= DATEADD(MONTH, -6, GETDATE())
+        GROUP BY FORMAT(E.DataEmprestimo, 'yyyy-MM'), C.CategoriaID, C.Nome
+        ORDER BY MesAno DESC, TotalEmprestimos DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução Desafio 8:</strong> Livros com baixa disponibilidade</p>
         <code-block lang="sql">
-SELECT
-    L.Titulo,
-    L.NumCopias AS TotalCopias,
-    L.NumCopiasDisponiveis AS Disponiveis,
-    C.Nome AS Categoria
-FROM Livros L
-INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-WHERE L.NumCopiasDisponiveis < 2
-ORDER BY L.NumCopiasDisponiveis;
+        SELECT
+            L.Titulo,
+            L.NumCopias AS TotalCopias,
+            L.NumCopiasDisponiveis AS Disponiveis,
+            C.Nome AS Categoria
+        FROM Livros L
+        INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+        WHERE L.NumCopiasDisponiveis < 2
+        ORDER BY L.NumCopiasDisponiveis;
         </code-block>
     </step>
 </procedure>

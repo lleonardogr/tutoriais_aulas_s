@@ -655,95 +655,95 @@ INCLUDE (DataEmprestimo, Status);
     <step>
         <p><strong>Solução 1:</strong> Livros com autores e categorias</p>
         <code-block lang="sql">
-SELECT
-    L.Titulo,
-    A.Nome AS Autor,
-    C.Nome AS Categoria,
-    L.AnoPublicacao
-FROM Livros L
-INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
-INNER JOIN Autores A ON LA.AutorID = A.AutorID
-INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-ORDER BY L.Titulo;
+        SELECT
+            L.Titulo,
+            A.Nome AS Autor,
+            C.Nome AS Categoria,
+            L.AnoPublicacao
+        FROM Livros L
+        INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
+        INNER JOIN Autores A ON LA.AutorID = A.AutorID
+        INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+        ORDER BY L.Titulo;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 2:</strong> Membros sem empréstimos</p>
         <code-block lang="sql">
-SELECT
-    M.Nome,
-    M.Email,
-    M.DataCadastro
-FROM Membros M
-LEFT JOIN Emprestimos E ON M.MembroID = E.MembroID
-WHERE E.EmprestimoID IS NULL;
+            SELECT
+                M.Nome,
+                M.Email,
+                M.DataCadastro
+            FROM Membros M
+            LEFT JOIN Emprestimos E ON M.MembroID = E.MembroID
+            WHERE E.EmprestimoID IS NULL;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 3:</strong> Total de empréstimos por categoria</p>
         <code-block lang="sql">
-SELECT
-    C.Nome AS Categoria,
-    COUNT(E.EmprestimoID) AS TotalEmprestimos
-FROM Categorias C
-LEFT JOIN Livros L ON C.CategoriaID = L.CategoriaID
-LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
-GROUP BY C.CategoriaID, C.Nome
-ORDER BY TotalEmprestimos DESC;
+        SELECT
+            C.Nome AS Categoria,
+            COUNT(E.EmprestimoID) AS TotalEmprestimos
+        FROM Categorias C
+        LEFT JOIN Livros L ON C.CategoriaID = L.CategoriaID
+        LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
+        GROUP BY C.CategoriaID, C.Nome
+        ORDER BY TotalEmprestimos DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 5:</strong> Empréstimos atrasados detalhados</p>
         <code-block lang="sql">
-SELECT
-    M.Nome AS Membro,
-    M.Email,
-    M.Telefone,
-    L.Titulo AS Livro,
-    A.Nome AS Autor,
-    E.DataEmprestimo,
-    E.DataDevolucaoPrevista,
-    DATEDIFF(DAY, E.DataDevolucaoPrevista, GETDATE()) AS DiasAtraso
-FROM Emprestimos E
-INNER JOIN Membros M ON E.MembroID = M.MembroID
-INNER JOIN Livros L ON E.LivroID = L.LivroID
-INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
-INNER JOIN Autores A ON LA.AutorID = A.AutorID
-WHERE E.Status = 'Atrasado'
-ORDER BY DiasAtraso DESC;
+        SELECT
+            M.Nome AS Membro,
+            M.Email,
+            M.Telefone,
+            L.Titulo AS Livro,
+            A.Nome AS Autor,
+            E.DataEmprestimo,
+            E.DataDevolucaoPrevista,
+            DATEDIFF(DAY, E.DataDevolucaoPrevista, GETDATE()) AS DiasAtraso
+        FROM Emprestimos E
+        INNER JOIN Membros M ON E.MembroID = M.MembroID
+        INNER JOIN Livros L ON E.LivroID = L.LivroID
+        INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
+        INNER JOIN Autores A ON LA.AutorID = A.AutorID
+        WHERE E.Status = 'Atrasado'
+        ORDER BY DiasAtraso DESC;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 6:</strong> Pares de livros do mesmo autor</p>
         <code-block lang="sql">
-SELECT
-    A.Nome AS Autor,
-    L1.Titulo AS Livro1,
-    L2.Titulo AS Livro2
-FROM Autores A
-INNER JOIN LivroAutor LA1 ON A.AutorID = LA1.AutorID
-INNER JOIN LivroAutor LA2 ON A.AutorID = LA2.AutorID AND LA1.LivroID < LA2.LivroID
-INNER JOIN Livros L1 ON LA1.LivroID = L1.LivroID
-INNER JOIN Livros L2 ON LA2.LivroID = L2.LivroID
-ORDER BY A.Nome, L1.Titulo;
+        SELECT
+            A.Nome AS Autor,
+            L1.Titulo AS Livro1,
+            L2.Titulo AS Livro2
+        FROM Autores A
+        INNER JOIN LivroAutor LA1 ON A.AutorID = LA1.AutorID
+        INNER JOIN LivroAutor LA2 ON A.AutorID = LA2.AutorID AND LA1.LivroID < LA2.LivroID
+        INNER JOIN Livros L1 ON LA1.LivroID = L1.LivroID
+        INNER JOIN Livros L2 ON LA2.LivroID = L2.LivroID
+        ORDER BY A.Nome, L1.Titulo;
         </code-block>
     </step>
     <step>
         <p><strong>Solução 9:</strong> Relatório completo de livros</p>
         <code-block lang="sql">
-SELECT
-    L.Titulo,
-    STRING_AGG(A.Nome, ', ') AS Autores,
-    C.Nome AS Categoria,
-    COUNT(E.EmprestimoID) AS TotalEmprestimos,
-    L.NumCopiasDisponiveis AS Disponiveis
-FROM Livros L
-INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
-INNER JOIN Autores A ON LA.AutorID = A.AutorID
-INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
-LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
-GROUP BY L.LivroID, L.Titulo, C.Nome, L.NumCopiasDisponiveis
-ORDER BY TotalEmprestimos DESC;
+        SELECT
+            L.Titulo,
+            STRING_AGG(A.Nome, ', ') AS Autores,
+            C.Nome AS Categoria,
+            COUNT(E.EmprestimoID) AS TotalEmprestimos,
+            L.NumCopiasDisponiveis AS Disponiveis
+        FROM Livros L
+        INNER JOIN LivroAutor LA ON L.LivroID = LA.LivroID
+        INNER JOIN Autores A ON LA.AutorID = A.AutorID
+        INNER JOIN Categorias C ON L.CategoriaID = C.CategoriaID
+        LEFT JOIN Emprestimos E ON L.LivroID = E.LivroID
+        GROUP BY L.LivroID, L.Titulo, C.Nome, L.NumCopiasDisponiveis
+        ORDER BY TotalEmprestimos DESC;
         </code-block>
     </step>
 </procedure>
