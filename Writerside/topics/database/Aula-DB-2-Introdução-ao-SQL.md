@@ -26,7 +26,7 @@ Nesta aula, você vai:
 
 Diferente de linguagens procedurais como Python ou Java, o SQL é declarativo:
 
-```sql
+```SQL
 -- SQL (declarativo): você diz O QUÊ quer
 SELECT nome, email
 FROM clientes
@@ -139,23 +139,22 @@ Vamos criar um banco de dados simples para praticar:
     </step>
     <step>
         <code-block lang="sql">
--- Criar um novo banco de dados
-CREATE DATABASE EscolaDB;
-GO
-
--- Usar o banco de dados criado
-USE EscolaDB;
-GO
-
--- Criar uma tabela simples
-CREATE TABLE Alunos (
-    AlunoID INT PRIMARY KEY IDENTITY(1,1),
-    Nome VARCHAR(100) NOT NULL,
-    Email VARCHAR(100),
-    DataNascimento DATE,
-    Ativo BIT DEFAULT 1
-);
-GO
+        -- Criar um novo banco de dados
+        SQL
+        CREATE DATABASE EscolaDB;
+        GO
+        -- Usar o banco de dados criado
+        USE EscolaDB;
+        GO
+        -- Criar uma tabela simples
+        CREATE TABLE Alunos (
+        AlunoID INT PRIMARY KEY IDENTITY(1,1),
+        Nome VARCHAR(100) NOT NULL,
+        Email VARCHAR(100),
+        DataNascimento DATE,
+        Ativo BIT DEFAULT 1
+        );
+        GO
         </code-block>
     </step>
     <step>
