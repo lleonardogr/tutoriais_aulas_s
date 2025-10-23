@@ -72,11 +72,10 @@
         </secondary>
 
         <!-- Tópicos adicionais: Conteúdos avançados em JavaScript -->
+        <!-- Seção será ativada quando as aulas 11-15 forem criadas
         <misc>
             <cards>
                 <title>Tópicos Avançados em JavaScript</title>
-                <!-- Aulas avançadas serão adicionadas futuramente -->
-                <!--
                 <a href="Aula-13-Comunicação-Assíncrona-e-APIs.md" summary="Aprenda sobre comunicação assíncrona e consumo de APIs.">
                     Aula 13: Comunicação Assíncrona e APIs
                 </a>
@@ -86,9 +85,9 @@
                 <a href="Aula-15-Boas-Práticas-e-Otimização.md" summary="Descubra boas práticas, otimização e design responsivo.">
                     Aula 15: Boas Práticas, Otimização e Design Responsivo
                 </a>
-                -->
             </cards>
         </misc>
+        -->
     </section-starting-page>
 
 </topic>

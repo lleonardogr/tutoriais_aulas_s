@@ -599,7 +599,7 @@ GO
 -- Agora não é possível alterar ou remover colunas usadas na view
 ```
 
-### Índices
+### Boas Práticas para Índices
 
 1. **Não exagere**: Cada índice consome espaço e afeta INSERT/UPDATE/DELETE
 2. **Ordem importa**: Em índices compostos, coluna mais seletiva primeiro
