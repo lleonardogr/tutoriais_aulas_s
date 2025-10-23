@@ -135,7 +135,9 @@ Vamos criar um banco de dados simples para praticar:
         <p>Clique em <strong>Nova Consulta</strong> na barra de ferramentas</p>
     </step>
     <step>
-        <p>Digite o seguinte código SQL:</p>
+        <p>Digite o seguinte código SQL</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Criar um novo banco de dados
 CREATE DATABASE EscolaDB;

@@ -130,7 +130,9 @@ Vamos começar criando o banco de dados e as tabelas:
         <p>Abra o SQL Server Management Studio (SSMS)</p>
     </step>
     <step>
-        <p>Crie o banco de dados:</p>
+        <p>Crie o banco de dados</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Criar banco de dados
 CREATE DATABASE BibliotecaDB;
@@ -141,7 +143,9 @@ GO
         </code-block>
     </step>
     <step>
-        <p>Crie as tabelas na ordem correta (tabelas sem dependências primeiro):</p>
+        <p>Crie as tabelas na ordem correta (tabelas sem dependências primeiro)</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Tabela Categorias
 CREATE TABLE Categorias (
@@ -209,7 +213,9 @@ PRINT 'Estrutura do banco de dados criada com sucesso!';
         </code-block>
     </step>
     <step>
-        <p>Verifique as tabelas criadas:</p>
+        <p>Verifique as tabelas criadas</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Ver todas as tabelas
 SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES
@@ -228,7 +234,9 @@ Agora vamos popular o banco com dados realistas:
 
 <procedure title="Popular o Banco de Dados" id="popular-dados">
     <step>
-        <p>Inserir Categorias:</p>
+        <p>Inserir Categorias</p>
+    </step>
+    <step>
         <code-block lang="sql">
 INSERT INTO Categorias (Nome, Descricao) VALUES
     ('Ficção', 'Obras de ficção literária'),
@@ -246,7 +254,9 @@ SELECT * FROM Categorias;
         </code-block>
     </step>
     <step>
-        <p>Inserir Autores:</p>
+        <p>Inserir Autores</p>
+    </step>
+    <step>
         <code-block lang="sql">
 INSERT INTO Autores (Nome, DataNascimento, Nacionalidade, Biografia) VALUES
     ('Machado de Assis', '1839-06-21', 'Brasileira', 'Maior escritor brasileiro, fundador da ABL'),
@@ -264,7 +274,9 @@ SELECT * FROM Autores;
         </code-block>
     </step>
     <step>
-        <p>Inserir Membros:</p>
+        <p>Inserir Membros</p>
+    </step>
+    <step>
         <code-block lang="sql">
 INSERT INTO Membros (Nome, Email, Telefone, Endereco) VALUES
     ('Ana Silva', 'ana.silva@email.com', '(11) 98765-4321', 'Rua das Flores, 123 - São Paulo'),
@@ -282,7 +294,9 @@ SELECT * FROM Membros;
         </code-block>
     </step>
     <step>
-        <p>Inserir Livros:</p>
+        <p>Inserir Livros</p>
+    </step>
+    <step>
         <code-block lang="sql">
 INSERT INTO Livros (Titulo, ISBN, AnoPublicacao, NumCopias, NumCopiasDisponiveis, CategoriaID) VALUES
     ('Dom Casmurro', '978-8535911664', 1899, 3, 3, 1),
@@ -305,7 +319,9 @@ SELECT * FROM Livros;
         </code-block>
     </step>
     <step>
-        <p>Associar Livros e Autores:</p>
+        <p>Associar Livros e Autores</p>
+    </step>
+    <step>
         <code-block lang="sql">
 INSERT INTO LivroAutor (LivroID, AutorID) VALUES
     (1, 1),   -- Dom Casmurro - Machado de Assis
@@ -333,7 +349,9 @@ ORDER BY L.Titulo;
         </code-block>
     </step>
     <step>
-        <p>Inserir Empréstimos:</p>
+        <p>Inserir Empréstimos</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Inserir empréstimos (alguns já devolvidos, outros ativos)
 INSERT INTO Emprestimos (LivroID, MembroID, DataEmprestimo, DataDevolucaoPrevista, DataDevolucaoReal, Status) VALUES

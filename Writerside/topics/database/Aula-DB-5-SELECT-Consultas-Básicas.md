@@ -52,7 +52,9 @@ Antes de prosseguir, vamos criar um banco de dados com dados de exemplo:
         <p>Abra o SQL Server Management Studio (SSMS)</p>
     </step>
     <step>
-        <p>Execute o script abaixo para criar o banco e popular com dados:</p>
+        <p>Execute o script abaixo para criar o banco e popular com dados</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Criar banco de dados
 CREATE DATABASE LojaDB;
@@ -143,7 +145,9 @@ PRINT 'Banco de dados criado e populado com sucesso!';
         </code-block>
     </step>
     <step>
-        <p>Verifique se os dados foram inseridos:</p>
+        <p>Verifique se os dados foram inseridos</p>
+    </step>
+    <step>
         <code-block lang="sql">
 SELECT COUNT(*) AS TotalClientes FROM Clientes;
 SELECT COUNT(*) AS TotalProdutos FROM Produtos;

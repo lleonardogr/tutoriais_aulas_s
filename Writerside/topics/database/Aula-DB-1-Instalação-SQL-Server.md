@@ -176,7 +176,9 @@ Vamos executar alguns comandos para verificar se tudo está funcionando corretam
         <p>No SSMS, clique em <strong>Nova Consulta</strong> na barra de ferramentas</p>
     </step>
     <step>
-        <p>Digite o seguinte comando SQL para verificar a versão do SQL Server:</p>
+        <p>Digite o seguinte comando SQL para verificar a versão do SQL Server</p>
+    </step>
+    <step>
         <code-block lang="sql">
 SELECT @@VERSION AS 'Versão do SQL Server';
         </code-block>
@@ -188,7 +190,9 @@ SELECT @@VERSION AS 'Versão do SQL Server';
         <p>Verifique o resultado na grade inferior - você deve ver informações sobre a versão instalada</p>
     </step>
     <step>
-        <p>Execute mais alguns comandos de verificação:</p>
+        <p>Execute mais alguns comandos de verificação</p>
+    </step>
+    <step>
         <code-block lang="sql">
 -- Verificar nome da instância
 SELECT @@SERVERNAME AS 'Nome do Servidor';
